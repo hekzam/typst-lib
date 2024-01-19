@@ -1,21 +1,21 @@
-#import "lib.typ": m-rect, finalize-atomic-boxes
+#import "lib.typ": rect-box, finalize-atomic-boxes
 #let f-color = white
 
 #set align(left+top)
 
 #set page(
   paper: "a4",
-  header: [#m-rect("h0", 10cm, .5cm, fill: f-color)],
+  header: [#rect-box("h0", 10cm, .5cm, fill-color: f-color)],
   footer: [
     #set align(center)
-    #m-rect("f0", 10cm, 1cm, fill: f-color)
+    #rect-box("f0", 10cm, 1cm, fill-color: f-color)
   ]
 )
 
-#m-rect("b0", 5cm, 1cm, fill: f-color)
+#rect-box("b0", 5cm, 1cm, fill-color: f-color)
 
-#m-rect("b1", 100%, 1cm, fill: f-color)
+#rect-box("b1", 100%, 1cm, fill-color: f-color, stroke-width: 0.01mm)
 
-Inline #box(m-rect("b2i", 8cm, 2.5cm, fill: f-color))
+Inline #box(rect-box("b2i", 8cm, 2.5cm, fill-color: f-color))
 
 #finalize-atomic-boxes()
