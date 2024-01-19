@@ -1,9 +1,9 @@
 [package]
-name = "heckzam"
+name = "hekzam"
 version = "0.1.0"
 entrypoint = "lib.typ"
 authors = ["Millian Poquet"]
 license = "Apache-2.0"
-description = "Set of functions to build exams/tests/questionnaires. Mostly meant to be used by heckzam other tools to automate test generation and evaluation, but can also be used manually."
+description = "Set of functions to build exams/tests/questionnaires. Mostly meant to be used by hekzam other tools to automate test generation and evaluation, but can also be used manually."
 homepage = "https://github.com/composable-auto-assessment/typst-lib"
 keywords = ["exam", "test", "questionnaire", "mcq", "multiple true-false", "multiple choice", "question"]
