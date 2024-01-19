@@ -13,6 +13,7 @@
           dev = pkgs.mkShell {
             buildInputs = [
               pkgs.typst
+              pkgs.inkscape
               pkgs.python3
               pkgs.python3Packages.opencv4
               pkgs.python3Packages.pytest
