@@ -1,7 +1,8 @@
 $/*Les deux premières fonctions furent écrites par M. Poquet
 Les suivantes*/$
 
-#import "typst-lib-main/lib.typ": rect-box, finalize-atomic-boxes
+#import "lib.typ": rect-box, finalize-atomic-boxes
+
 
 #let mm-pos(position) = (
   page: position.page,
@@ -24,7 +25,8 @@ Les suivantes*/$
 		rect-box(idea, 100%, white_zone)
 	}
 }
-#let qcm_simple(n1, n2, libelle, cases, checkbox: "[ ]", inv: false, vertic: false) = {
+
+#let qcm_simple(n1, n2, libelle, cases, vertic) = {
 	set par(justify: true)
 	question_simple(n1, n2, libelle, 0pt)
 	linebreak()
@@ -33,21 +35,28 @@ Les suivantes*/$
 	let l = ()
 	let col = ()
 	if vertic {
-		if inv {set align(right)}
-		for (case) in cases [
-			#checkbox #case \
+		for case in cases [
+			#grid(
+				columns: (10pt,1fr,1fr),
+				rows: (auto, 0pt),
+				gutter: 3pt,
+				rect-box("None", 0.2cm, 5pt),
+				[#case]
+			)
 		]
 	}
 	else {
 		/*if inv {set align(right)}*/
 		for (case) in cases {
-			l.push(if inv [#case #checkbox] else [#checkbox #case])
+			l.push([
+				#box(rect-box("none", 2mm, 2mm)) #case])
 			col.push(1fr)
 		}
 		grid(columns: col, ..l)
 	}
 }
-#let qcm_vf(n1, n2, libelle, quest, checkbox) = {
+
+#let qcm_vf(n1, n2, libelle, quest) = {
 	set par(justify: true)
 	question_simple(n1, n2, libelle, 0pt)
 	set text(10pt, weight: "regular")
@@ -55,13 +64,13 @@ Les suivantes*/$
 	let grille = ()
 	for (q) in quest {
 		grille.push([#q])
-		grille.push([Vrai #checkbox])
-		grille.push([Faux #checkbox])
+		grille.push([Vrai #box(rect-box("none", 2mm, 2mm))])
+		grille.push([Faux #box(rect-box("none", 2mm, 2mm))])
 	}
 	/*grille.flatten()*/
 	grid(columns: (2fr, 1fr, 1fr), gutter: 6pt, ..grille)
 }
-#let qcm_mult(n1, n2, libelle, quest, rep, checkbox) = {
+#let qcm_mult(n1, n2, libelle, quest, rep) = {
 	set par(justify: true)
 	question_simple(n1, n2, libelle, 0pt)
 	set text(10pt, weight: "regular")
@@ -98,15 +107,6 @@ Les suivantes*/$
 	)
 }
 
-#let champ_id(nb, aff) = {
-	if aff == true {
-		"|"
-		for i in range(nb) {
-			"__|"
-		}
-	}
-}
-
 #set heading(numbering: "1")
 #show heading: it => [
 	#set align(left)
@@ -126,12 +126,6 @@ Les suivantes*/$
 	]
 )*/
 
-#champ_id(8,true)
-
-#rect_simple(10%, 12%)
-
-#let cb1 = "[ ]"
-#let cb2 = "()"
 
 = Premier exercice
 
@@ -143,18 +137,18 @@ Les suivantes*/$
 
 = Deuxième exercice
 
-#qcm_simple(2, 1, "Première question", (20, 25, 27, 37, 61, 89), cb2, false, false)
+#qcm_simple(2, 1, "Première question", (20, 25, 27, 37, 61, 89), false)
 
-#qcm_simple(2, 2, "Deuxième question", ("One", "Two", "Three", "Four", "Five"), cb1, true, false)
+#qcm_simple(2, 2, "Deuxième question", ("One", "Two", "Three", "Four", "Five"), true)
 
 = Troisième exercice
 
-#qcm_vf(3, 1, "Question vrai-faux", ("Assertion 1", "Assertion 2"), cb1)
+#qcm_vf(3, 1, "Question vrai-faux", ("Assertion 1", "Assertion 2"))
 
-#qcm_simple(3, 2, "Question à la verticale", (1, 2, 3, "La réponse D"), cb1, false, true)
+#qcm_simple(3, 2, "Question à la verticale", (1, 2, 3, "La réponse D"), false)
 
-#qcm_simple(3, 3, "Question à la verticale et à droite", (1, 2, 3, 4, 5), cb1, true, true)
+#qcm_simple(3, 3, "Question à la verticale et à droite", (1, 2, 3, 4, 5), true)
 
 = Quatrième exercice
 
-#qcm_mult(4, 1, "Question multiple", ("Question 1", "Question 2"), (1, 2, 3, "La réponse D"), cb1)
+#qcm_mult(4, 1, "Question multiple", ("Question 1", "Question 2"), (1, 2, 3, "La réponse D"))
