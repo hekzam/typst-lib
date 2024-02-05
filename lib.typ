@@ -37,3 +37,9 @@
     [ #metadata(final-boxes) <atomic-boxes> ]
   })
 }
+
+#let mm-pos(position) = (
+  page: position.page,
+  x: position.x.mm(),
+  y: position.y.mm()
+)

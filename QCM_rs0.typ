@@ -1,14 +1,6 @@
-$/*Les deux premières fonctions furent écrites par M. Poquet
-Les suivantes*/$
+$/*Les fonctions furent écrites par M. Poquet*/$
 
-#import "lib.typ": rect-box, finalize-atomic-boxes
-
-
-#let mm-pos(position) = (
-  page: position.page,
-  x: position.x.mm(),
-  y: position.y.mm()
-)
+#import "lib.typ": rect-box, finalize-atomic-boxes, mm-pos
 
 #let rect_simple(width, height) = {
 	rect(width: width, height: height, fill: white, inset: 0pt, stroke: .25mm, {
@@ -37,9 +29,9 @@ Les suivantes*/$
 	if vertic {
 		for case in cases [
 			#grid(
-				columns: (10pt,1fr,1fr),
+				columns: (10pt, 1fr, 1fr),
 				rows: (auto, 0pt),
-				gutter: 3pt,
+				gutter: 0pt,
 				rect-box("none", 2mm, 2mm),
 				[#case]
 			)
@@ -88,7 +80,8 @@ Les suivantes*/$
 		row.push(auto)
 		grille.push([#q])
 		for (r) in rep {
-			grille.push("[]")
+			grille.push([
+				#box(rect-box("none", 2mm, 2mm))])
 		}
 	}
 	grid(columns: col, rows: row, gutter: 6pt, ..grille)
