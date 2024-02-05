@@ -40,13 +40,12 @@ Les suivantes*/$
 				columns: (10pt,1fr,1fr),
 				rows: (auto, 0pt),
 				gutter: 3pt,
-				rect-box("None", 0.2cm, 5pt),
+				rect-box("none", 2mm, 2mm),
 				[#case]
 			)
 		]
 	}
 	else {
-		/*if inv {set align(right)}*/
 		for (case) in cases {
 			l.push([
 				#box(rect-box("none", 2mm, 2mm)) #case])
