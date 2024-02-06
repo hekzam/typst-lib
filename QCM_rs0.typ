@@ -2,12 +2,6 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 
 #import "lib.typ": rect-box, finalize-atomic-boxes, mm-pos
 
-#let rect_simple(width, height) = {
-	rect(width: width, height: height, fill: white, inset: 0pt, stroke: .25mm, {
-		set align(left+top)
-		locate(loc2 => {[#mm-pos(loc2.position())]})
-	})
-}
 
 #let question_simple(n1, n2, libelle, white_zone) = {
 	let idea = [#n1] + "." + [#n2]
@@ -18,7 +12,7 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	}
 }
 
-#let qcm_simple(n1, n2, libelle, cases, vertic) = {
+#let qcm_simple(n1, n2, libelle, cases, vertical) = {
 	set par(justify: true)
 	question_simple(n1, n2, libelle, 0pt)
 	linebreak()
@@ -26,7 +20,7 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	
 	let l = ()
 	let col = ()
-	if vertic {
+	if vertical {
 		for case in cases [
 			#grid(
 				columns: (10pt, 1fr, 1fr),
@@ -47,13 +41,13 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	}
 }
 
-#let qcm_vf(n1, n2, libelle, quest) = {
+#let qcm_vf(n1, n2, libelle, question) = {
 	set par(justify: true)
 	question_simple(n1, n2, libelle, 0pt)
 	set text(10pt, weight: "regular")
 	
 	let grille = ()
-	for (q) in quest {
+	for (q) in question {
 		grille.push([#q])
 		grille.push([Vrai #box(rect-box("none", 2mm, 2mm))])
 		grille.push([Faux #box(rect-box("none", 2mm, 2mm))])
@@ -61,7 +55,7 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	/*grille.flatten()*/
 	grid(columns: (2fr, 1fr, 1fr), gutter: 6pt, ..grille)
 }
-#let qcm_mult(n1, n2, libelle, quest, rep) = {
+#let qcm_mult(n1, n2, libelle, questions, reponses) = {
 	set par(justify: true)
 	question_simple(n1, n2, libelle, 0pt)
 	set text(10pt, weight: "regular")
@@ -72,14 +66,14 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	row.push(auto)
 	let grille = ()
 	grille.push("")
-	for (r) in rep {
+	for (r) in reponses {
 		col.push(1fr)
 		grille.push([#r])
 	}
-	for (q) in quest {
+	for (q) in questions {
 		row.push(auto)
 		grille.push([#q])
-		for (r) in rep {
+		for (r) in reponses {
 			grille.push([
 				#box(rect-box("none", 2mm, 2mm))])
 		}
@@ -105,18 +99,6 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	#set text(font: "Inria Serif")
 	Exercice #counter(heading).display()\: #text(it.body)
 ]
-
-/*
-#set page(
-	paper: "a4",
-	header: [
-		#rect(width: 100%, height: 1cm, inset: 0pt)
-	],
-	footer: [
-		#set align(center)
-		#rect(width: 100%, height: 1cm, inset: 0pt)
-	]
-)*/
 
 
 = Premier exercice
