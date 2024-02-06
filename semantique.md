@@ -2,11 +2,11 @@ question_simple :
 ---------------------
 Permet d'afficher un ennoncé avec ou sans rectangle blanc pour la réponse.
 
-<u>Signature de la fonction</u> 
+_Signature de la fonction_ 
 
 question_simple(n1: int, n2: integer, libelle: string, white_zone: integer)
 
-<u>Paramètres</u>
+_Paramètres_
 
 - n1, n2 -> identifiant de l'ennoncé
 - libelle -> ennocé de l'exercice
@@ -19,11 +19,11 @@ qcm_simple :
 ---------------------
 Permet d'afficher un ennoncé avec plusieurs réponses en format QCM.
 
-<u>Signature de la fonction</u>
+_Signature de la fonction_
 
 qcm_simple(n1: integer, n2: integer, libelle: string, cases: type, vertic : boolean)
 
-<u>Paramètres</u>
+_Paramètres_
 
 - n1, n2 -> identifiant de l'ennoncé
 - libelle -> ennocé de l'exercice
@@ -36,11 +36,11 @@ qcm_vf :
 ---------------------
 Permet d'afficher un ennoncé dont les réponses sont vrai ou faux.
 
-<u>Signature de la fonction</u>
+_Signature de la fonction_
 
 qcm_vf(n1: integer, n2: integer, libelle: string, quest: type)
 
-<u>Paramètres</u>
+_Paramètres_
 
 - n1, n2 -> identifiant de l'ennoncé
 - libelle -> ennocé de l'exercice
@@ -52,11 +52,11 @@ qcm_mult :
 ---------------------
 Permet d'afficher un ennoncé avec plusieurs questions en format QCM.
 
-<u>Signature de la fonction</u> 
+_Signature de la fonction_
 
 qcm_mult(n1: integer, n2: integer, libelle: string, quest: type, rep: type)
 
-<u>Paramètres</u>
+_Paramètres_
 
 - n1, n2 -> identifiant de l'ennoncé
 - libelle -> ennocé de l'exercice
@@ -69,11 +69,11 @@ qcm_tableau :
 ---------------------
 Permet d'afficher un QCM sous forme de tableau.
 
-<u>Signature de la fonction</u>
+_Signature de la fonction_
 
 qcm_tableau(n1: integer, n2: integer, axe_x: type, axe_y: type, libelle: string)
 
-<u>Paramètres</u>
+_Paramètres_
 
 - n1, n2 -> identifiant de l'ennoncé
 - axe_x -> 
