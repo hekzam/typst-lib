@@ -107,6 +107,9 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	Exercice #counter(heading).display()\: #text(it.body)
 ]
 
+#let img1 = "images_insertion_bank/R-1627667-1367325593-4452.jpg"
+#let img2 = "images_insertion_bank/R-1670206-1426927001-9189.jpg"
+#let img3 = "images_insertion_bank/R-1740202-1421692551-4533.jpg"
 
 = Premier exercice
 
