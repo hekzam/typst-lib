@@ -2,7 +2,6 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 
 #import "lib.typ": rect-box, finalize-atomic-boxes, mm-pos
 
-
 #let question_simple(n1, n2, libelle, white_zone) = {
 	let idea = [#n1] + "." + [#n2]
 	[#idea] + [.: ] + [#libelle]
@@ -55,6 +54,7 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	/*grille.flatten()*/
 	grid(columns: (2fr, 1fr, 1fr), gutter: 6pt, ..grille)
 }
+
 #let qcm_mult(n1, n2, libelle, questions, reponses) = {
 	set par(justify: true)
 	question_simple(n1, n2, libelle, 0pt)
@@ -80,6 +80,13 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	}
 	grid(columns: col, rows: row, gutter: 6pt, ..grille)
 }
+
+#let image_figure(libelle, img, zoom, upside) = {
+	if upside {show figure.caption: set figure.caption(position: top)}
+	else {show figure.caption: set figure.caption(position: bottom)}
+	figure(image(img, width: zoom), caption: libelle)
+}
+
 #let qcm_tableau(n1, n2, axe_x, axe_y, libelle) = {
 	table(
 		columns: (1fr, auto, auto),
@@ -117,12 +124,18 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 
 = Troisième exercice
 
+#image_figure("Ceci est une image simple.", img1, 20%, false)
+
 #qcm_vf(3, 1, "Question vrai-faux", ("Assertion 1", "Assertion 2"))
 
-#qcm_simple(3, 2, "Question à la verticale", (1, 2, 3, "La réponse D"), false)
+#qcm_simple(3, 2, "Question multi-formats", (1, 2, 3, "La réponse D"), false)
 
-#qcm_simple(3, 3, "Question à la verticale et à droite", (1, 2, 3, 4, 5), true)
+#image_figure("Ceci est une autre image simple.", img2, 115pt, false)
+
+#qcm_simple(3, 3, "Question multi-formats verticale", (1, 2, 3, "La réponse D"), true)
 
 = Quatrième exercice
+
+#image_figure("Ceci est encore une autre image simple mais cette fois le libellé est au-dessus.", img3, 60%, true)
 
 #qcm_mult(4, 1, "Question multiple", ("Question 1", "Question 2"), (1, 2, 3, "La réponse D"))
