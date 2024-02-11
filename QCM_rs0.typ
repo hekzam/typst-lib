@@ -2,6 +2,52 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 
 #import "lib.typ": rect-box, finalize-atomic-boxes, mm-pos
 
+#let case(phrase, largeur, hauteur) = {
+  let case = grid(
+    columns : 2,
+    column-gutter: 3mm,
+    phrase,
+    [#box(rect-box("b0",largeur, hauteur))]
+  )
+  return case
+}
+
+#let suite_cases(phrase, nbr, largeur, hauteur) = {
+	  let l = ()
+		for i in range(nbr) {
+			l.push([#box(rect-box("b0",largeur, hauteur))])
+		}
+	
+	let g = grid(columns: l.len(),column-gutter:1.5mm, ..l)
+	grid(columns: 2, gutter:3mm, phrase, g)
+}
+
+#let grid_num(nbr) = {
+  let l = ()
+  for a in range(0,nbr) {
+    let lg = ()
+    for b in range(0,10) {
+      lg.push([#case([#b],5mm,5mm)])
+    }
+    l.push(grid(columns:10,rows:1,gutter:10mm,..lg))
+  }
+  return grid(rows:nbr,gutter:3mm,..l)
+}
+
+#let champ_identifiant( nbr, grille) = {
+  let l = ()
+  l.push([#case("Prenom",2cm,0.5cm)])
+  l.push([#case("Nom",2cm,0.5cm)])
+	if (grille) {
+		  l.push([#grid_num(nbr)])
+	}
+	else {
+      l.push([#suite_cases("Numero etudiant", nbr, 3mm,5mm)])
+  
+	}
+	grid(columns: l.len(),column-gutter:5mm,..l)
+}
+
 #let question_simple(n1, n2, libelle, white_zone) = {
 	let idea = [#n1] + "." + [#n2]
 	[#idea] + [.: ] + [#libelle]

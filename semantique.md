@@ -1,3 +1,18 @@
+champ_identifiant :
+---------------------
+Permet d'afficher une zone pour que l'élève s'identifie.
+
+_Signature de la fonction_ 
+
+champ_identifiant(nbr: integer, grille: boolean)
+
+_Paramètres_
+
+- nbr -> quantité de chiffres qui compose le numéro étudiant
+- grille -> paramètre qui permet d'afficher le numéro étudiant sous forme de grille ou non
+
+
+
 question_simple :
 ---------------------
 Permet d'afficher un ennoncé avec ou sans rectangle blanc pour la réponse.
@@ -80,3 +95,55 @@ _Paramètres_
 - axe_y -> 
 - libelle -> ennocé de l'exercice
 
+
+
+
+
+*Annexe*
+--------------------
+
+
+case :
+---------------------
+Permet d'afficher le numéro étudiant sous forme d'une suite de cases.
+
+_Signature de la fonction_
+
+case(phrase, largeur, hauteur)
+
+_Paramètres_
+
+- phrase -> texte à afficher devant la suite de cases
+- largeur -> largeur de chaque case
+- libelle -> hauteur de chaque cases
+
+
+
+suite_cases :
+---------------------
+Permet d'afficher le numéro étudiant sous forme d'une suite de cases.
+
+_Signature de la fonction_
+
+suite_cases(phrase: string, nbr: integer, largeur: relative, hauteur: relative)
+
+_Paramètres_
+
+- phrase -> texte à afficher devant la suite de cases
+- nbr -> quantité de chiffres qui compose le numéro étudiant
+- largeur -> largeur de chaque case
+- libelle -> hauteur de chaque cases
+
+
+
+grid_Num(nbr) :
+---------------------
+Permet d'afficher le numéro étudiant sous forme de grille.
+
+_Signature de la fonction_
+
+grid_num(nbr: integer)
+
+_Paramètres_
+
+- nbr -> quantité de chiffres qui compose le numéro étudiant

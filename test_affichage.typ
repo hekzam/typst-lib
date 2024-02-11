@@ -11,6 +11,9 @@
 #let img2 = "images_insertion_bank/R-1670206-1426927001-9189.jpg"
 #let img3 = "images_insertion_bank/R-1740202-1421692551-4533.jpg"
 
+#qcm.champ_identifiant(8,true)
+#qcm.champ_identifiant(8,false)
+
 = Premier exercice
 
 #qcm.question_simple(1, 1, "Simple énoncé", 0pt)
