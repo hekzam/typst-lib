@@ -79,22 +79,35 @@ _Paramètres_
 - rep -> listes comprenant les reponses
 
 
-
-qcm_tableau :
+image_figure :
 ---------------------
-Permet d'afficher un QCM sous forme de tableau.
+Permet d'afficher une image en tant que figure avec un libellé
 
 _Signature de la fonction_
 
-qcm_tableau(n1: integer, n2: integer, axe_x: type, axe_y: type, libelle: string)
+image_figure(libelle: string, img: string, zoom: auto int relative fraction array, upside: boolean)
+
+- libelle -> titre du libellé de l'image
+- img -> nom du fichier de l'image avec éventuellement le chemin des répertoires depuis le répertoire courant
+- zoom -> indication d'ajustement de la largeur de l'image
+- upside -> indication d'affichage du libellé au-dessus ou en-dessous de l'image
+
+
+table_content :
+---------------------
+Permet d'afficher un tableau avec le contenu des lignes, colonnes et cases.
+
+_Signature de la fonction_
+
+table_content(n1: integer, n2: integer, col: type, row: type, libelle: string, content: type)
 
 _Paramètres_
 
-- n1, n2 -> identifiant de l'ennoncé
-- axe_x -> 
-- axe_y -> 
-- libelle -> ennocé de l'exercice
-
+- n1, n2 -> identifiant de l'énoncé
+- col -> liste des libellés des colonnes
+- row -> liste des libellés des lignes
+- libelle -> énoncé du tableau
+- content -> contenu des cases; peut être laissé vide pour un tableau à compléter
 
 
 

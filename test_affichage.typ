@@ -45,3 +45,9 @@
 #qcm.image_figure("Ceci est encore une autre image simple mais cette fois le libellé est au-dessus.", img3, 60%, true)
 
 #qcm.qcm_mult(4, 1, "Question multiple", ("Question 1", "Question 2"), (1, 2, 3, "La réponse D"))
+
+= Cinquième exercice
+
+#qcm.table_content(5, 1, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), "Tableau à compléter", ())
+
+#qcm.table_content(5, 2, ("Column 1", "Column 2 (very very very very very very very large)", "Column 3"), ("Row A \nThis is it", "Row B"), "Tableau à compléter", ("Content 1", "Content 2", "Content 3", "Content 4", "Content 5 (very very very very very very very thick)"))

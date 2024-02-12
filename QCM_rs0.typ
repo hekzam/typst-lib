@@ -133,16 +133,40 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	figure(image(img, width: zoom), caption: libelle)
 }
 
-#let qcm_tableau(n1, n2, axe_x, axe_y, libelle) = {
+#let table_content(n1, n2, col, row, libelle, content) = {
+	let col_align = ()
+	let row_align = ()
+	let cases = ()
+	let cc = 0 /*content counter*/
+	col_align.push(auto)
+	row_align.push(auto)
+	cases.push("")
+	for (c) in col {
+		col_align.push(1fr)
+		cases.push([#c])
+	}
+	for (r) in row {
+		row_align.push(auto)
+		cases.push([#r])
+		for c in col {
+			if content.len() > cc {
+				cases.push(content.at(cc))
+				cc = cc + 1
+			} else {
+				cases.push("")
+			}
+		}
+	}
+	
+	question_simple(n1, n2, libelle, 0pt)
 	table(
-		columns: (1fr, auto, auto),
+		columns: col_align,
+		rows: row_align,
 		inset: 10pt,
 		align: (col, row) =>
 		if row == 0 { center }
 		else if col == 0 { left }
-		else { right },
-		[], for (x) in axe_x [#x],
-		for (y) in axe_y [#y, #for (x) in axe_x []],
+		else { center },
+		..cases
 	)
 }
-
