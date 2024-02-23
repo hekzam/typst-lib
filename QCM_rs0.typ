@@ -34,7 +34,7 @@ $/*Les fonctions furent écrites par M. Poquet*/$
   return grid(rows:nbr,gutter:3mm,..l)
 }
 
-#let champ_identifiant( nbr, grille) = {
+#let champ_identifiant(nbr, grille) = {
   let l = ()
   l.push([#case("Prenom",2cm,0.5cm)])
   l.push([#case("Nom",2cm,0.5cm)])
@@ -133,13 +133,32 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	figure(image(img, width: zoom), caption: libelle)
 }
 
-#let table_content(n1, n2, col, row, libelle, content) = {
+#let table_content(n1, n2, col, row, libelle, content/*, vertic: "", horiz: ""*/) = {
+	let id = [#n1] + "." + [#n2]
 	let col_align = ()
 	let row_align = ()
+	let titre = ()
 	let cases = ()
+	let global_col_align = ()
+	let global_row_align = ()
 	let cc = 0 /*content counter*/
 	col_align.push(auto)
 	row_align.push(auto)
+	/*let tall(body) = style(styles => measure(body, styles).width)
+	tall("styles parameter is deep shit")*/
+	
+	/*if horiz != "" and vertic != "" {
+		titre.push("")
+	}
+	if horiz != "" {
+		global_row_align.push(15pt)
+		titre.push(rect(height: 15pt, width: (100%), [#horiz]))
+	}
+	if vertic != "" {
+		global_col_align.push(15pt)
+		titre.push(rotate(270deg, origin: center, rect(height: 15pt, width: tall(vertic), [#vertic])))
+	}*/
+	
 	cases.push("")
 	for (c) in col {
 		col_align.push(1fr)
@@ -149,24 +168,75 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 		row_align.push(auto)
 		cases.push([#r])
 		for c in col {
-			if content.len() > cc {
+			if (cc < content.len()) and (content.at(cc) != "") {
 				cases.push(content.at(cc))
-				cc = cc + 1
 			} else {
-				cases.push("")
+				let idea = id + "." + [#cc]
+				cases.push(rect-box(idea, auto, auto))
 			}
+			cc = cc + 1
+		}
+	}
+	global_row_align.push(auto)
+	global_col_align.push(auto)
+	
+	question_simple(n1, n2, libelle, 0pt)
+	table(
+		columns: global_col_align,
+		rows: global_row_align,
+		inset: 0pt,
+		align: horizon + center,
+		..titre,
+		table(
+			columns: col_align,
+			rows: row_align,
+			inset: 8pt,
+			gutter: (2pt, 0pt),
+			align: (col, row) =>
+			if row == 0 { center }
+			else if col == 0 { left }
+			else { center },
+			..cases
+		)
+	)
+}
+
+#let table_1d(n1, n2, col, taille, libelle, horiz: false, renverse: false) = {
+	let id = [#n1] + "." + [#n2]
+	let col_align = ()
+	/*let titre = ()*/
+	let cases = ()
+	let cc = 0
+	
+	if (horiz) {
+		for (c) in col {
+			col_align.push(auto)
+			cases.push([#c])
+			let idea = id + "." + [#cc]
+			cases.push(rect-box(idea, auto, auto))
+			cc = cc + 1
+		}
+	} else {
+		for (c) in col {
+			col_align.push(1fr)
+			cases.push([#c])
+		}
+		for (c) in col {
+			let idea = id + "." + [#cc]
+			cases.push(rect-box(idea, auto, auto))
+			cc = cc + 1
 		}
 	}
 	
 	question_simple(n1, n2, libelle, 0pt)
 	table(
-		columns: col_align,
-		rows: row_align,
-		inset: 10pt,
-		align: (col, row) =>
-		if row == 0 { center }
-		else if col == 0 { left }
-		else { center },
+		columns: if (horiz) {(auto, 1fr)} else {col_align},
+		rows: if (horiz) {taille} else {(auto, taille)},
+		row-gutter: if (horiz) {0pt} else {2pt},
+		column-gutter: if (horiz) {2pt} else {0pt},
+		inset: 8pt,
+		align: horizon + center,
+		/*..titre,*/
 		..cases
 	)
 }

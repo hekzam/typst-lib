@@ -51,3 +51,15 @@
 #qcm.table_content(5, 1, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), "Tableau à compléter", ())
 
 #qcm.table_content(5, 2, ("Column 1", "Column 2 (very very very very very very very large)", "Column 3"), ("Row A \nThis is it", "Row B"), "Tableau à compléter", ("Content 1", "Content 2", "Content 3", "Content 4", "Content 5 (very very very very very very very thick)"))
+
+#qcm.table_content(5, 3, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B", "Row C", "Row D\nYou\nYesyesyes"), "Tableau avec titre", ("", "Video Screens Control", "", "Content 3", "", "Content 5", "", "Content 7", "", "Content 9"))
+
+#qcm.table_content(5, 4, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), "Tableau avec titre", ("Content 0", "Content 1", "Content 2", "Content 3", "Content 4", "Content 5"))
+
+#qcm.table_content(5, 5, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), "Tableau avec sous-titre", ("Content 0", "", "Content 2", "Content 3"))
+
+= Sixième exercice
+
+#qcm.table_1d(6, 1, ("Column 1", "Column 2", "Column 3"), 180pt, "Tableau à une dimension", horiz: false)
+
+#qcm.table_1d(6, 2, ("Column 1", "Column 2", "Column 3"), 60pt, "Tableau à une dimension renversé", horiz: true)
