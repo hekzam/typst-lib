@@ -12,104 +12,130 @@ _Paramètres_
 - grille -> paramètre qui permet d'afficher le numéro étudiant sous forme de grille ou non
 
 
-
-question_simple :
----------------------
-Permet d'afficher un ennoncé avec ou sans rectangle blanc pour la réponse.
+question
+------------------
+Simple affichage d'un énoncé avec numéro d'exercice, question et sous-question. Fonction générique incorporée dans toutes les autres fonctions d'énoncé.
 
 _Signature de la fonction_ 
 
-question_simple(n1: int, n2: integer, libelle: string, white_zone: integer)
+question(numb: integer, sub-numb: integer, sub-sub-numb: integer, title: string)
 
 _Paramètres_
 
-- n1, n2 -> identifiant de l'ennoncé
-- libelle -> ennocé de l'exercice
+- numb -> numéro de l'exercice
+- sub-numb -> numéro de la question
+- sub-sub-numb -> éventuellement numéro de la sous-question, si pas de sous-question entrer 0
+- title -> énoncé de l'exercice
+
+
+question_zone :
+---------------------
+Énoncé avec captation de la réponse via parsing.
+
+_Signature de la fonction_ 
+
+question_zone(numb: integer, sub-numb: integer, sub-sub-numb: integer, title: string, white_zone: integer)
+
+_Paramètres_
+
+- numb -> numéro de l'exercice
+- sub-numb -> numéro de la question
+- sub-sub-numb -> éventuellement numéro de la sous-question, si pas de sous-question entrer 0
+- title -> énoncé de l'exercice
 - white_zone -> taille du rectangle blanc (en pt)
                 "none" sinon
 
 
-
-qcm_simple :
+mcq_simple :
 ---------------------
-Permet d'afficher un ennoncé avec plusieurs réponses en format QCM.
+Affiche un énoncé et une question avec plusieurs réponses avec des cases à parser.
 
 _Signature de la fonction_
 
-qcm_simple(n1: integer, n2: integer, libelle: string, cases: type, vertic : boolean)
+qcm_simple(numb: integer, sub-numb: integer, sub-sub-numb: integer, title: string, cases: content, vertic : boolean)
 
 _Paramètres_
 
-- n1, n2 -> identifiant de l'ennoncé
-- libelle -> ennocé de l'exercice
+- numb -> numéro de l'exercice
+- sub-numb -> numéro de la question
+- sub-sub-numb -> éventuellement numéro de la sous-question, si pas de sous-question entrer 0
+- title -> énoncé de l'exercice
 - cases -> listes des reponses
 - vertic -> boolean pour affichage en vertical ou horizontal
 
 
-
-qcm_vf :
+right_wrong :
 ---------------------
-Permet d'afficher un ennoncé dont les réponses sont vrai ou faux.
+Affiche un énoncé et une série d'asertions auxquelles répondre par vrai ou faux.
 
 _Signature de la fonction_
 
-qcm_vf(n1: integer, n2: integer, libelle: string, quest: type)
+qcm_vf(numb: integer, sub-numb: integer, sub-sub-numb: integer, title: string, assertions: type)
 
 _Paramètres_
 
-- n1, n2 -> identifiant de l'ennoncé
-- libelle -> ennocé de l'exercice
-- quest -> listes comprenant les questions
+- numb -> numéro de l'exercice
+- sub-numb -> numéro de la question
+- sub-sub-numb -> éventuellement numéro de la sous-question, si pas de sous-question entrer 0
+- title -> énoncé de la question
+- assertions -> liste comprenant les assertions auxquelles il faut répondre vrai ou faux
 
 
 
-qcm_mult :
+mcq_multiple :
 ---------------------
-Permet d'afficher un ennoncé avec plusieurs questions en format QCM.
+Affiche un énoncé et une série de questions aux choix identiques, sous forme de grille.
 
 _Signature de la fonction_
 
-qcm_mult(n1: integer, n2: integer, libelle: string, quest: type, rep: type)
+qcm_mult(numb: integer, sub-numb: integer, sub-sub-numb: integer, title: string, quest: type, rep: type)
 
 _Paramètres_
 
-- n1, n2 -> identifiant de l'ennoncé
-- libelle -> ennocé de l'exercice
-- quest -> listes comprenant les questions
-- rep -> listes comprenant les reponses
+- numb -> numéro de l'exercice
+- sub-numb -> numéro de la question
+- sub-sub-numb -> éventuellement numéro de la sous-question, si pas de sous-question entrer 0
+- title -> énoncé de la question
+- quest -> liste comprenant les questions
+- rep -> liste comprenant les reponses
 
 
-image_figure :
+table_parse :
 ---------------------
-Permet d'afficher une image en tant que figure avec un libellé
+Permet d'afficher un tableau avec le contenu des lignes, colonnes et cases. Inclusion d'espaces de parsing (rect-box) dans toutes les cases non pré-remplies.
 
 _Signature de la fonction_
 
-image_figure(libelle: string, img: string, zoom: auto int relative fraction array, upside: boolean)
-
-- libelle -> titre du libellé de l'image
-- img -> nom du fichier de l'image avec éventuellement le chemin des répertoires depuis le répertoire courant
-- zoom -> indication d'ajustement de la largeur de l'image
-- upside -> indication d'affichage du libellé au-dessus ou en-dessous de l'image
-
-
-table_content :
----------------------
-Permet d'afficher un tableau avec le contenu des lignes, colonnes et cases.
-
-_Signature de la fonction_
-
-table_content(n1: integer, n2: integer, col: type, row: type, libelle: string, content: type)
+table_content(numb: integer, sub-numb: integer, sub-sub-numb: integer, title: string, col: type, row: type, content: type)
 
 _Paramètres_
 
-- n1, n2 -> identifiant de l'énoncé
+- numb -> numéro de l'exercice
+- sub-numb -> numéro de la question
+- sub-sub-numb -> éventuellement numéro de la sous-question, si pas de sous-question entrer 0
+- title -> énoncé de la question
 - col -> liste des libellés des colonnes
 - row -> liste des libellés des lignes
-- libelle -> énoncé du tableau
 - content -> contenu des cases; peut être laissé vide pour un tableau à compléter
 
 
+table_column:
+---------------------
+Permet d'afficher un tableau avec uniquement des lignes ou des colonnes. Inclusion d'espaces de parsing de taille paramétrable.
+
+_Signature de la fonction_
+
+table_1d(numb: integer, sub-numb: integer, sub-sub-numb: integer, title: string, col: type, taille: relative_length, horiz: boolean)
+
+_Paramètres_
+
+- numb -> numéro de l'exercice
+- sub-numb -> numéro de la question
+- sub-sub-numb -> éventuellement numéro de la sous-question, si pas de sous-question entrer 0
+- title -> énoncé de la question
+- col -> liste des libellés des colonnes
+- taille -> définition de la hauteur des cases à remplir
+- horiz -> booléen déterminant la position du tableau: sous forme de lignes su horiz vrai, sous formes de colonnes sinon
 
 
 *Annexe*
