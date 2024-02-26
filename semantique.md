@@ -64,7 +64,7 @@ _Paramètres_
 - vertic -> boolean pour affichage en vertical ou horizontal
 
 
-right_wrong :
+true_false :
 ---------------------
 Affiche un énoncé et une série d'asertions auxquelles répondre par vrai ou faux.
 
