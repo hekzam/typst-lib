@@ -7,28 +7,28 @@
 = Champs identifiant
 
 == Premier champ identifiant
-#mcq.champ_identifiant(8, true, false, false)
+#mcq.ID_field(8, true, false, false)
 
 == Deuxième champ identifiant
-#mcq.champ_identifiant(8, true, false, true)
+#mcq.ID_field(8, debutCol : 0, finCol: 6, true, false, true)
 
 == Troisème champ identifiant
-#mcq.champ_identifiant(8, true, true, false)
+#mcq.ID_field(8, true, true, false)
 
 == Quatrième champ identifiant
-#mcq.champ_identifiant(8, true, true, true)
+#mcq.ID_field(8, debutCol : 0, finCol: 9, true, true, true)
 
 == Cinquième champ identifiant
-#mcq.champ_identifiant(8, false, false, false)
+#mcq.ID_field(8, false, false, false)
 
 == Sixième champ identifiant
-#mcq.champ_identifiant(8, false, false, true)
+#mcq.ID_field(8, false, false, true)
 
 == Septième champ identifiant
-#mcq.champ_identifiant(8, false, true, false)
+#mcq.ID_field(8, false, true, false)
 
 == Huitième champ identifiant
-#mcq.champ_identifiant(8, false, true, true)
+#mcq.ID_field(8, false, true, true)
 
 #set heading(numbering: "1")
 #show heading: it => [

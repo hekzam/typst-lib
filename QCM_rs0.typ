@@ -1,4 +1,4 @@
-$/*Les fonctions furent écrites par M. Poquet*/$
+
 
 #import "lib.typ": rect-box, finalize-atomic-boxes, mm-pos
 
@@ -21,19 +21,19 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	grid(columns: 2, gutter:3mm, phrase, g)
 }
 
-#let grid_num(nbr) = {
+#let grid_num(ligne, debutCol, finCol) = {
 	let l = ()
-	for a in range(0,nbr) {
+	for a in range(0,ligne) {
 		let lg = ()
-		for b in range(0, 10) {
+		for b in range(debutCol, finCol+1) {
 			lg.push([#case([#b], 5mm, 5mm)])
 		}
 		l.push(grid(columns:10, rows:1, gutter:10mm, ..lg))
 	}
-	return grid(rows:nbr, gutter:3mm, ..l)
+	return grid(rows:ligne, gutter:3mm, ..l)
 }
 
-#let ID_field(nbr, grille, aff, aff2) = {
+#let ID_field(ligne, debutCol: none, finCol: none, grille, aff, aff2) = {
 	let l = ()
 	if (aff){
 		l.push([#case("Prénom", 2cm, 0.5cm)])
@@ -41,9 +41,9 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	}
 	if (aff2){
 		if (grille) {
-			l.push([#grid_num(nbr)])
+			l.push([#grid_num(ligne, debutCol, finCol)])
 		} else {
-			l.push([#suite_cases("Numéro étudiant", nbr, 3mm, 5mm)])
+			l.push([#suite_cases("Numéro étudiant", ligne, 3mm, 5mm)])
 		}
 	}
 	else{
