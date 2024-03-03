@@ -33,14 +33,21 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	return grid(rows:nbr, gutter:3mm, ..l)
 }
 
-#let champ_identifiant(nbr, grille) = {
+#let ID_field(nbr, grille, aff, aff2) = {
 	let l = ()
-	l.push([#case("Prénom", 2cm, 0.5cm)])
-	l.push([#case("Nom", 2cm, 0.5cm)])
-	if (grille) {
-		  l.push([#grid_num(nbr)])
-	} else {
-		l.push([#suite_cases("Numéro étudiant", nbr, 3mm, 5mm)])
+	if (aff){
+		l.push([#case("Prénom", 2cm, 0.5cm)])
+		l.push([#case("Nom", 2cm, 0.5cm)])
+	}
+	if (aff2){
+		if (grille) {
+			l.push([#grid_num(nbr)])
+		} else {
+			l.push([#suite_cases("Numéro étudiant", nbr, 3mm, 5mm)])
+		}
+	}
+	else{
+		l.push([])
 	}
 	grid(columns: l.len(), column-gutter:5mm, ..l)
 }
@@ -63,7 +70,7 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	}
 }
 
-#let mcq_simple(numb, sub-numb, sub-sub-numb, title, cases, vertical) = {
+#let mcq_simple(numb, sub-numb, sub-sub-numb, title, cases, vertical, cert) = {
 	set par(justify: true)
 	set text(10pt, weight: "regular")
 	question(numb, sub-numb, sub-sub-numb, title)
@@ -71,19 +78,54 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 	
 	let id = [#numb] + "." + [#sub-numb] + "." + [#sub-sub-numb]
 	let cc = 0
+	let n = 0
 	let l = ()
 	let col = ()
-	
 	for (case) in cases {
 		let id-box = id + "." + [#cc]
-		l.push([#box(rect-box(id-box, 2mm, 2mm)) #case])
+		if ((vertical==false) or (cert==false)) {
+			l.push([#box(rect-box(id-box, 2mm, 2mm)) #case])
+		}
+		else {
+			l.push([#box(rect-box(id-box, 2mm, 2mm)) #case])
+			for i in range(6) {
+				n = i*20
+				let id-certitude = id-box + "." + [#i+1]
+				l.push([#n% #box(rect-box(id-certitude, 2mm, 2mm))])
+			}
+		}
 		if (vertical) {col.push(16pt)} else {col.push(1fr)}
 		cc = cc + 1
 	}
-	if (vertical) {grid(rows: col, ..l)} else {grid(columns: col, ..l)}
+	if (vertical) {
+		if (cert==true){
+			let l2 = ([],[Niveau de certitude])
+			grid(columns: (8fr,2fr), ..l2)
+			grid(columns: (4fr,30pt,30pt,30pt,30pt,30pt,30pt), rows: col, gutter: 6pt, ..l)
+		}
+		else{
+			grid(rows: col, ..l)
+		}
+	}
+	else {
+		grid(columns: col, ..l)
+	}
+	if ((vertical==false) and (cert)) {
+		let l2 = ()
+		let col2 = ()
+		l2.push([Niveau de certitude])
+		col2.push(3fr)
+		for i in range(6) {
+			n = i*20
+			let id-certitude = id + "." + [#cc+1] + "." + [#i+1]
+			l2.push([#box(rect-box(id-certitude, 2mm, 2mm)) #n%])
+			col2.push(1fr)
+		}
+		{grid(columns: col2, ..l2)}
+	}
 }
 
-#let right_wrong(numb, sub-numb, sub-sub-numb, title, assertions) = {
+#let true_false(numb, sub-numb, sub-sub-numb, title, assertions, cert) = {
 	set par(justify: true)
 	set text(10pt, weight: "regular")
 	question(numb, sub-numb, sub-sub-numb, title)
@@ -97,10 +139,24 @@ $/*Les fonctions furent écrites par M. Poquet*/$
 		grille.push([#a])
 		grille.push([Vrai #box(rect-box(id-box + "r", 2mm, 2mm))])
 		grille.push([Faux #box(rect-box(id-box + "w", 2mm, 2mm))])
+		if (cert){
+			grille.push([])
+			for i in range(6){
+				let n = i*20
+				grille.push([#n% #box(rect-box(id-box + "p" + [#n], 2mm, 2mm))])
+			}
+		}
 		cc = cc + 1
 	}
 	/*grille.flatten()*/
-	grid(columns: (2fr, 1fr, 1fr), gutter: 6pt, ..grille)
+	if (cert==true){
+		let l2 = ([],[Niveau de certitude])
+		grid(columns: (8fr,2fr), ..l2)
+		grid(columns: (2fr, 1fr, 1fr, 40pt, 30pt, 30pt, 30pt, 30pt, 30pt, 30pt), gutter: 6pt, ..grille)
+	}
+	else{
+		grid(columns: (2fr, 1fr, 1fr), gutter: 6pt, ..grille)
+	}
 }
 
 #let mcq_grid(numb, sub-numb, sub-sub-numb, title, questions, answers) = {
