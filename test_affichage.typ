@@ -1,34 +1,5 @@
 #import "QCM_rs0.typ" as mcq
-
-#let img1 = "images_insertion_bank/R-1627667-1367325593-4452.jpg"
-#let img2 = "images_insertion_bank/R-1670206-1426927001-9189.jpg"
-#let img3 = "images_insertion_bank/R-1740202-1421692551-4533.jpg"
-
-= Champs identifiant
-
-== Premier champ identifiant
-#mcq.ID_field(8, true, false, false)
-
-== Deuxième champ identifiant
-#mcq.ID_field(8, debutCol : 0, finCol: 6, true, false, true)
-
-== Troisème champ identifiant
-#mcq.ID_field(8, true, true, false)
-
-== Quatrième champ identifiant
-#mcq.ID_field(8, debutCol : 0, finCol: 9, true, true, true)
-
-== Cinquième champ identifiant
-#mcq.ID_field(8, false, false, false)
-
-== Sixième champ identifiant
-#mcq.ID_field(8, false, false, true)
-
-== Septième champ identifiant
-#mcq.ID_field(8, false, true, false)
-
-== Huitième champ identifiant
-#mcq.ID_field(8, false, true, true)
+#import "lib.typ" as lib
 
 #set heading(numbering: "1")
 #show heading: it => [
@@ -37,50 +8,89 @@
 	Exercice #counter(heading).display()\: #text(it.body)
 ]
 
+= Champs identifiant
+
+Identifier experiment 1
+#mcq.ID_field(91, if_grid: true)
+
+Identifier experiment 2
+#mcq.ID_field(92)
+
+Identifier experiment 3
+#mcq.ID_field(93, if_names: false, if_grid: true)
+
+Identifier experiment 4
+#mcq.ID_field(94, if_names: false)
+
+Identifier experiment 5
+#mcq.ID_field(95, rows: 13, if_grid: true)
+
+= Questions de cours
+
+Parsing de lettres
+#mcq.string_field(101, 50pt, 15pt)
+
+Parsing de chiffres
+#mcq.string_field(102, 35pt, 15pt)
+
+Parsing d'un chiffre
+#mcq.single_figure_field(103, 10pt, 15pt)
+
+Séquence de chiffres
+#mcq.fields_suite(104, mcq.single_figure_field, 8, 12pt, 18pt, space: 6pt)
+
+Séquence de mots
+#mcq.fields_suite(105, mcq.string_field, 4, 65pt, 15pt, space: 8pt)
+
 = Premier exercice
 
-#mcq.question(1, 1, 0, "Simple énoncé")
-
-#mcq.question_zone(1, 2, 0, "Répondre sur la copie:", 24pt)
-
-#mcq.question_zone(1, 3, 0, "Répondre sur la copie:", 60pt)
+Zone de texte (répondre sur la copie)
+#mcq.question_zone(1, 24pt)
+Zone de texte
+#mcq.question_zone(2, 60pt)
 
 = Deuxième exercice
 
-#mcq.mcq_simple(2, 1, 0, "Première question", (20, 25, 27, 37, 61, 89), false, false)
+Questions de QCM uniques
 
-#mcq.mcq_simple(2, 2, 0, "Deuxième question", ("One", "Two", "Three", "Four", "Five"), true, false)
+#mcq.mcq_one(3, (20, 25, 27, 37, 61, 89), false)
 
-#mcq.mcq_simple(2, 1, 0, "Troisième question", (20, 25, 27, 37, 61, 89), false, true)
+#mcq.mcq_one(4, ("One", "Two", "Three", "Four", "Five"), true)
 
-#mcq.mcq_simple(2, 2, 0, "Quatrième question", ("One", "Two", "Three", "Four", "Five"), true, true)
+#mcq.mcq_one(5, (1, 2, 3, "La réponse D"), false)
+
+#mcq.mcq_one(6, (1, 2, 3, "La réponse D"), true)
 
 = Troisième exercice
 
-#mcq.true_false(3, 1, 0, "Question vrai-faux", ("Assertion 1", "Assertion 2"), true)
+Question vrai-faux
 
-#mcq.true_false(3, 2, 0, "Question vrai-faux 2", ("Assertion 1", "Assertion 2"), false)
+#mcq.true_false(7, ("Assertion 1", "Assertion 2"))
 
-#mcq.mcq_simple(3, 3, 0, "Question multi-formats", (1, 2, 3, "La réponse D"), false, false)
+Plusieurs questions, mêmes réponses
 
-#mcq.mcq_simple(3, 4, 0, "Question multi-formats verticale", (1, 2, 3, "La réponse D"), true, false)
-
-#mcq.mcq_grid(3, 5, 0, "Question multiple", ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"))
+#mcq.mcq_grid(8, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"))
 
 = Quatrième exercice
 
-#mcq.table_parse(4, 1, 1, "Tableau à compléter", ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ())
+Tableaux à parser
 
-#mcq.table_parse(4, 1, 2, "Tableau à compléter", ("Column 1", "Column 2 (very very very very very very very large)", "Column 3"), ("Row A \nThis is it", "Row B"), ("Content 1", "Content 2", "Content 3", "Content 4", "Content 5 (very very very very very very very thick)"))
+#mcq.table_parse(9, 25pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ())
 
-#mcq.table_parse(4, 1, 3, "Tableau avec titre", ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B", "Row C", "Row D\nYou\nYesyesyes"), ("", "Video Screens Control", "", "Content 3", "", "Content 5", "", "Content 7", "", "Content 9"))
+#mcq.table_parse(10, 120pt, ("Column 1", "Column 2 (very very very very very very very large)", "Column 3"), ("Row A \nThis is it", "Row B"), ("Content 1", "Content 2", "Content 3", "Content 4", "Content 5 (very very very very very very very thick)"))
 
-#mcq.table_parse(4, 2, 1, "Tableau avec titre", ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "Content 1", "Content 2", "Content 3", "Content 4", "Content 5"))
+#mcq.table_parse(11, 60pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B", "Row C", "Row D\nYou\nYesyesyes"), ("", "Video Screens Control", "", "Content 3", "", "Content 5", "", "Content 7", "", "Content 9"))
 
-#mcq.table_parse(4, 2, 2, "Tableau avec sous-titre", ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "", "Content 2", "Content 3"))
+#mcq.table_parse(12, 80pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "Content 1", "Content 2", "Content 3", "Content 4", "Content 5"))
+
+#mcq.table_parse(13, 40pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "", "Content 2", "Content 3"))
 
 = Cinquième exercice
 
-#mcq.table_column(5, 1, 0, "Tableau à une dimension", ("Column 1", "Column 2", "Column 3"), 180pt, horiz: false)
+Tableaux version colonne
 
-#mcq.table_column(5, 2, 0, "Tableau à une dimension renversé", ("Column 1", "Column 2", "Column 3"), 60pt, horiz: true)
+#mcq.table_column(14, 180pt, ("Column 1", "Column 2", "Column 3"))
+
+#mcq.table_column(15, 45pt, ("Column 1", "Column 2", "Column 3"), horiz: true)
+
+#mcq.table_column(16, 95pt, ("Long column 1", "Column 2", "VeryLongColumn"), horiz: true)
