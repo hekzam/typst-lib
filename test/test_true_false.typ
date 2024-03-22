@@ -1,0 +1,111 @@
+#import "../QCM_rs0.typ" as mcq
+#import "../lib.typ": rect-box, finalize-atomic-boxes
+
+#mcq.true_false(7, ("Assertion 1", "Assertion 2"))
+#mcq.true_false(8, ("Assertion 1", "Assertion 2", "Assertion 3"), id_suite: ("A", "B", "C", "D", "E", "F"))
+
+#finalize-atomic-boxes()
+
+/*{
+  "7.0r": {
+    "page": 1,
+    "x": 113.44322711798634,
+    "y": 25.554189891168217,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "7.0w": {
+    "page": 1,
+    "x": 154.95062634496324,
+    "y": 25.554189891168217,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "7.1r": {
+    "page": 1,
+    "x": 113.44322711798634,
+    "y": 30.225043215211752,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "7.1w": {
+    "page": 1,
+    "x": 154.95062634496324,
+    "y": 30.225043215211752,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "8.A": {
+    "page": 1,
+    "x": 113.44322711798634,
+    "y": 37.43589265870566,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "8.B": {
+    "page": 1,
+    "x": 154.95062634496324,
+    "y": 37.43589265870566,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "8.C": {
+    "page": 1,
+    "x": 113.44322711798634,
+    "y": 42.106745982749196,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "8.D": {
+    "page": 1,
+    "x": 154.95062634496324,
+    "y": 42.106745982749196,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "8.E": {
+    "page": 1,
+    "x": 113.44322711798634,
+    "y": 46.77759930679273,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "8.F": {
+    "page": 1,
+    "x": 154.95062634496324,
+    "y": 46.77759930679273,
+    "width": 2.0,
+    "height": 2.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  }
+}
+*/

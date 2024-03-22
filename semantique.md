@@ -42,7 +42,7 @@ Affiche un énoncé et une question avec plusieurs réponses avec des cases à p
 
 _Signature de la fonction_
 
-mcq_one(idq: integer or string, cases: array, vertic : boolean, id_separator: string)
+mcq_one(idq: integer or string, cases: array, vertic : boolean, id_separator: string, id_suite: string array)
 
 _Paramètres_
 
@@ -50,6 +50,7 @@ _Paramètres_
 - cases -> listes des reponses
 - vertic -> boolean pour affichage en vertical ou horizontal
 - id_separator -> séparateur du préfixe et du corps de l'identifiant de chaque rect-box
+- id_suite -> liste des identifiants
 
 
 true_false :
@@ -58,13 +59,14 @@ Affiche un énoncé et une série d'asertions auxquelles répondre par vrai ou f
 
 _Signature de la fonction_
 
-true(idq: integer or string, assertions: array, id_separator: string)
+true(idq: integer or string, assertions: array, id_separator: string, id_suite: string array)
 
 _Paramètres_
 
 - idq -> identifiant du vrai/faux et préfixe des identifiants des rect-box associés
 - assertions -> liste comprenant les assertions auxquelles il faut répondre vrai ou faux
 - id_separator -> séparateur du préfixe et du corps de l'identifiant de chaque rect-box
+- id_suite -> liste des identifiants
 
 
 mcq_grid :
@@ -73,7 +75,7 @@ Affiche un énoncé et une série de questions aux choix identiques, sous forme 
 
 _Signature de la fonction_
 
-mcq_grid(idq: integer or string, questions: array, answers: array, id_separator: string)
+mcq_grid(idq: integer or string, questions: array, answers: array, id_separator: string, id_suite: string array)
 
 _Paramètres_
 
@@ -81,6 +83,7 @@ _Paramètres_
 - questions -> liste comprenant les questions
 - answers -> liste comprenant les reponses
 - id_separator -> séparateur du préfixe et du corps de l'identifiant de chaque rect-box
+- id_suite -> liste des identifiants
 
 
 table_parse :
@@ -89,7 +92,7 @@ Permet d'afficher un tableau avec le contenu des lignes, colonnes et cases. Incl
 
 _Signature de la fonction_
 
-table_parse(idq: integer or string, row_size: relative length, sub-sub-numb: integer, title: string, col: array, row: array, cont: array, id_separator: string)
+table_parse(idq: integer or string, row_size: relative length, col: array, row: array, cont: array, id_separator: string, id_suite: string array)
 
 _Paramètres_
 
@@ -99,6 +102,7 @@ _Paramètres_
 - row -> liste des libellés des lignes
 - cont -> contenu des cases; peut être laissé vide pour un tableau à compléter
 - id_separator -> séparateur du préfixe et du corps de l'identifiant de chaque rect-box
+- id_suite -> liste des identifiants
 
 
 table_column:
@@ -107,7 +111,7 @@ Permet d'afficher un tableau avec uniquement des lignes ou des colonnes. Inclusi
 
 _Signature de la fonction_
 
-table_1d(idq: integer or string, size: relative length, col: array, horiz: boolean, id_separator: string)
+table_1d(idq: integer or string, size: relative length, col: array, horiz: boolean, id_separator: string, id_suite: string array)
 
 _Paramètres_
 
@@ -116,6 +120,7 @@ _Paramètres_
 - col -> liste des libellés des colonnes
 - horiz -> booléen déterminant la position du tableau: sous forme de lignes su horiz vrai, sous formes de colonnes sinon
 - id_separator -> séparateur du préfixe et du corps de l'identifiant de chaque rect-box
+- id_suite -> liste des identifiants
 
 
 /* FONCTIONS GÉNÉRIQUES ET ANNEXES */
@@ -182,9 +187,10 @@ _Paramètres_
 - height -> hauteur des champs
 - space -> largeur de l'espace entre deux champs
 - id_separator -> séparateur du préfixe et du corps de l'identifiant de chaque rect-box
+- id_suite -> liste des identifiants
 
 
-grid_num(nbr) :
+grid_num :
 ---------------------
 Permet d'afficher le numéro étudiant sous forme de grille.
 
@@ -199,10 +205,10 @@ _Paramètres_
 - numb_beginning -> où commence l'incrémentation des chiffres
 - numb_end -> où finit l'incrémentation des chiffres
 - id_separator -> séparateur du préfixe et du corps de l'identifiant de chaque rect-box
+- id_suite -> liste des identifiants
 
 
 /* FONCTION DE VÉRIFICATION GLOBALE */
-
 
 verify :
 ---------------------
@@ -218,3 +224,19 @@ _Paramètres_
 - name_parameter -> num du paramètre sous forme de chaîne de caractères pour le message d'erreur
 - variable -> le paramètre dont nous devons vérifier le typage
 - expected_type -> type ou liste des types attendu.s
+
+
+verify_id_suite:
+---------------------
+Vérifie la bonne longueur de la liste d'identifiants vis-à-vis du nombre de champs de parsing
+
+_Signature de la fonction_
+
+verify_id_suite(name_function: string, name_number: string, id_suite: string array, number_to_compare: integer)
+
+_Paramètres_
+
+- name_function -> nom de la fonction sous forme de chaîne de caractères pour le message d'erreur
+- name_number -> num du nombre attendu sous forme de chaîne de caractères pour le message d'erreur
+- id_suite -> liste des identifiants
+- number_to_compare -> longueur attendue de la liste

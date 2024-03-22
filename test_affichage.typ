@@ -28,19 +28,19 @@ Identifier experiment 5
 = Questions de cours
 
 Parsing de lettres
-#mcq.string_field(101, 50pt, 15pt)
+#mcq.base_field(101, 50pt, 15pt, "word")
 
 Parsing de chiffres
-#mcq.string_field(102, 35pt, 15pt)
+#mcq.base_field(102, 35pt, 15pt, "word")
 
 Parsing d'un chiffre
-#mcq.single_figure_field(103, 10pt, 15pt)
+#mcq.base_field(103, 10pt, 15pt, "number")
 
 Séquence de chiffres
-#mcq.fields_suite(104, mcq.single_figure_field, 8, 12pt, 18pt, space: 6pt)
+#mcq.fields_suite(104, "single_figure", 8, 12pt, 18pt, space: 6pt, id_suite: (0, 1, 2, 3, 4, 5, 6, 33))
 
 Séquence de mots
-#mcq.fields_suite(105, mcq.string_field, 4, 65pt, 15pt, space: 8pt)
+#mcq.fields_suite(105, "word", 4, 65pt, 15pt, space: 8pt)
 
 = Premier exercice
 
@@ -94,3 +94,15 @@ Tableaux version colonne
 #mcq.table_column(15, 45pt, ("Column 1", "Column 2", "Column 3"), horiz: true)
 
 #mcq.table_column(16, 95pt, ("Long column 1", "Column 2", "VeryLongColumn"), horiz: true)
+
+= Sixième exercice
+
+Taux de confiance
+
+#mcq.confidence(17, nuances: (0, 5, 15, 50, 75, 85, 95, 100))
+
+#mcq.confidence(17, nuances: (5, 15, 5, 90, 50, 100, 0))
+
+#mcq.confidence(17, nuances: (), display_mode: false)
+
+#mcq.confidence(17, nuances: (10, 30, 50, 70, 90), vertical: true)
