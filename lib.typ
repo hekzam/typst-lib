@@ -8,32 +8,27 @@
   assert.eq(type(stroke-width), length, message: "stroke must be a length")
 
   rect(width: width, height:height, fill: fill-color, stroke: stroke-width + stroke-color, radius: 0mm, inset: 0mm, outset: 0mm, {
-    layout(size => {
-      locate(loc => {
-        set align(left+top)
-        let pos = loc.position()
-        let box = (
-          page: pos.page,
-          x: pos.x.mm(),
-          y: pos.y.mm(),
-          width: if type(width) == length { width.mm() }
-            else if type(width) == ratio { (width * size.width).mm() },
-          height: if type(height) == length { height.mm() }
-              else if type(height) == ratio { (height * size.height).mm() },
-          stroke-width: stroke-width.mm(),
-          stroke-color: stroke-color.to-hex(),
-          fill-color: fill-color.to-hex(),
-        )
-        atomic-boxes.update(x => { x.insert(str(id), box) ; x })
-        []
-      })
+    layout(size => context {
+      set align(left+top)
+      let pos = here().position()
+      let box = (
+        page: pos.page,
+        x: pos.x.mm(),
+        y: pos.y.mm(),
+        width: if type(width) == length { width.mm() }
+          else if type(width) == ratio { (width * size.width).mm() },
+        height: if type(height) == length { height.mm() }
+            else if type(height) == ratio { (height * size.height).mm() },
+        stroke-width: stroke-width.mm(),
+        stroke-color: stroke-color.to-hex(),
+        fill-color: fill-color.to-hex(),
+      )
+      atomic-boxes.update(x => { x.insert(str(id), box) ; x })
+      []
     })
   })
 }
 
-#let finalize-atomic-boxes() = {
-  locate(loc => {
-    let final-boxes = atomic-boxes.final(loc)
-    [ #metadata(final-boxes) <atomic-boxes> ]
-  })
-}
+#let finalize-atomic-boxes() = context [
+  #metadata(atomic-boxes.final()) <atomic-boxes>
+]
