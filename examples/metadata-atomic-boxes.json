@@ -1,0 +1,362 @@
+{
+  "id prénom": {
+    "page": 1,
+    "x": 44.85090724383963,
+    "y": 14.119450373061927,
+    "width": 40.0,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id nom": {
+    "page": 1,
+    "x": 44.85090724383963,
+    "y": 21.05972518653096,
+    "width": 40.0,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 0": {
+    "page": 1,
+    "x": 44.85090724383963,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 1": {
+    "page": 1,
+    "x": 48.350907243839636,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 2": {
+    "page": 1,
+    "x": 51.85090724383963,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 3": {
+    "page": 1,
+    "x": 55.35090724383963,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 4": {
+    "page": 1,
+    "x": 58.85090724383963,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 5": {
+    "page": 1,
+    "x": 62.350907243839636,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 6": {
+    "page": 1,
+    "x": 65.85090724383963,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "id num_étu 7": {
+    "page": 1,
+    "x": 69.35090724383963,
+    "y": 27.999999999999996,
+    "width": 3.5,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 C true": {
+    "page": 1,
+    "x": 44.715432515919076,
+    "y": 58.06880920043038,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 C false": {
+    "page": 1,
+    "x": 63.71543251591907,
+    "y": 58.06880920043038,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 C nosé": {
+    "page": 1,
+    "x": 82.71543251591908,
+    "y": 58.06880920043038,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 C++ true": {
+    "page": 1,
+    "x": 44.715432515919076,
+    "y": 62.56327390506764,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 C++ false": {
+    "page": 1,
+    "x": 63.71543251591907,
+    "y": 62.56327390506764,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 C++ nosé": {
+    "page": 1,
+    "x": 82.71543251591908,
+    "y": 62.56327390506764,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 LaTeX true": {
+    "page": 1,
+    "x": 44.715432515919076,
+    "y": 67.0577386097049,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 LaTeX false": {
+    "page": 1,
+    "x": 63.71543251591907,
+    "y": 67.0577386097049,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 LaTeX nosé": {
+    "page": 1,
+    "x": 82.71543251591908,
+    "y": 67.0577386097049,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Python true": {
+    "page": 1,
+    "x": 44.715432515919076,
+    "y": 71.55220331434215,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Python false": {
+    "page": 1,
+    "x": 63.71543251591907,
+    "y": 71.55220331434215,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Python nosé": {
+    "page": 1,
+    "x": 82.71543251591908,
+    "y": 71.55220331434215,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Rust true": {
+    "page": 1,
+    "x": 44.715432515919076,
+    "y": 76.0466680189794,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Rust false": {
+    "page": 1,
+    "x": 63.71543251591907,
+    "y": 76.0466680189794,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Rust nosé": {
+    "page": 1,
+    "x": 82.71543251591908,
+    "y": 76.0466680189794,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Typst true": {
+    "page": 1,
+    "x": 44.715432515919076,
+    "y": 80.54113272361667,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Typst false": {
+    "page": 1,
+    "x": 63.71543251591907,
+    "y": 80.54113272361667,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 Typst nosé": {
+    "page": 1,
+    "x": 82.71543251591908,
+    "y": 80.54113272361667,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo1 num_hi": {
+    "page": 1,
+    "x": 95.67905759970365,
+    "y": 87.75198216711057,
+    "width": 15.000000000000002,
+    "height": 5.0,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo2 cc_no_error": {
+    "page": 1,
+    "x": 32.5,
+    "y": 155.0396392081033,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo2 cc_no_warn": {
+    "page": 1,
+    "x": 32.5,
+    "y": 159.53410391274056,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo2 no_crash": {
+    "page": 1,
+    "x": 32.5,
+    "y": 164.0285686173778,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo2 ret_double": {
+    "page": 1,
+    "x": 32.5,
+    "y": 168.52303332201507,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo2 ret_square": {
+    "page": 1,
+    "x": 32.5,
+    "y": 131.43655990378,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo2 ret_exp": {
+    "page": 1,
+    "x": 32.5,
+    "y": 136.02725011244775,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  },
+  "exo2 ret_no": {
+    "page": 1,
+    "x": 32.5,
+    "y": 173.01749802665233,
+    "width": 2.5,
+    "height": 2.5,
+    "stroke-width": 0.25,
+    "stroke-color": "#000000",
+    "fill-color": "#ffffff"
+  }
+}
