@@ -101,8 +101,8 @@ Taux de confiance
 
 #mcq.confidence(17, nuances: (0, 5, 15, 50, 75, 85, 95, 100))
 
-#mcq.confidence(17, nuances: (5, 15, 5, 90, 50, 100, 0))
+#mcq.confidence(18, nuances: (5, 15, 5, 90, 50, 100, 0))
 
-#mcq.confidence(17, nuances: (), display_mode: false)
+#mcq.confidence(19, nuances: (), display_mode: false)
 
-#mcq.confidence(17, nuances: (10, 30, 50, 70, 90), vertical: true)
+#mcq.confidence(20, nuances: (10, 30, 50, 70, 90), vertical: true)

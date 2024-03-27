@@ -119,7 +119,7 @@
 	verify("ID_field", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
-	verify_id_suite("ID_field", "number of fields", id_suite, 2 + rows * (1 + numb_end - numb_beginning))
+	verify_id_suite("ID_field", "number of fields", id_suite, if (if_grid) {if (if_names) {2 + rows * (1 + numb_end - numb_beginning)} else {rows * (1 + numb_end - numb_beginning)}} else {if (if_names) {2 + rows} else {rows}})
 	
 	let l = ()
 	if (if_names) {
@@ -155,7 +155,7 @@
 	id_suite.dedup()
 	id_suite.flatten()
 	nuances.dedup()
-	verify_id_suite("confidence", "nuances array length", id_suite, nuances.len() + 2)
+	verify_id_suite("confidence", "nuances array length", id_suite, if (display_mode) {nuances.len() - 1} else {0})
 	
 	let l = ()
 	let row = ()
