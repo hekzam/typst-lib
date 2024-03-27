@@ -1,8 +1,8 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.mcq_grid(9, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"))
-#mcq.mcq_grid(10, ("Assertion 1", "Assertion 2", "Assertion 3"), (1, 2, 3), id_suite: ("A", "B", "C", "D", "E", "F", "G", "H", "I"))
+#mcq.mcq_grid(9, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"), fill_color: red)
+#mcq.mcq_grid(10, ("Assertion 1", "Assertion 2", "Assertion 3"), (1, 2, 3), id_suite: ("A", "B", "C", "D", "E", "F", "G", "H", "I"), fill_color: orange)
 
 #finalize-atomic-boxes()
 
@@ -15,7 +15,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.0.1": {
     "page": 1,
@@ -25,7 +25,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.0.2": {
     "page": 1,
@@ -35,7 +35,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.0.3": {
     "page": 1,
@@ -45,7 +45,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.1.0": {
     "page": 1,
@@ -55,7 +55,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.1.1": {
     "page": 1,
@@ -65,7 +65,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.1.2": {
     "page": 1,
@@ -75,7 +75,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.1.3": {
     "page": 1,
@@ -85,7 +85,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.2.0": {
     "page": 1,
@@ -95,7 +95,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.2.1": {
     "page": 1,
@@ -105,7 +105,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.2.2": {
     "page": 1,
@@ -115,7 +115,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.2.3": {
     "page": 1,
@@ -125,7 +125,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.3.0": {
     "page": 1,
@@ -135,7 +135,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.3.1": {
     "page": 1,
@@ -145,7 +145,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.3.2": {
     "page": 1,
@@ -155,7 +155,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.3.3": {
     "page": 1,
@@ -165,7 +165,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.4.0": {
     "page": 1,
@@ -175,7 +175,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.4.1": {
     "page": 1,
@@ -185,7 +185,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.4.2": {
     "page": 1,
@@ -195,7 +195,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.4.3": {
     "page": 1,
@@ -205,7 +205,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.5.0": {
     "page": 1,
@@ -215,7 +215,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.5.1": {
     "page": 1,
@@ -225,7 +225,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.5.2": {
     "page": 1,
@@ -235,7 +235,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.5.3": {
     "page": 1,
@@ -245,7 +245,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.6.0": {
     "page": 1,
@@ -255,7 +255,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.6.1": {
     "page": 1,
@@ -265,7 +265,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.6.2": {
     "page": 1,
@@ -275,7 +275,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "9.6.3": {
     "page": 1,
@@ -285,7 +285,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   },
   "10.A": {
     "page": 1,
@@ -295,7 +295,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.B": {
     "page": 1,
@@ -305,7 +305,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.C": {
     "page": 1,
@@ -315,7 +315,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.D": {
     "page": 1,
@@ -325,7 +325,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.E": {
     "page": 1,
@@ -335,7 +335,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.F": {
     "page": 1,
@@ -345,7 +345,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.G": {
     "page": 1,
@@ -355,7 +355,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.H": {
     "page": 1,
@@ -365,7 +365,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   },
   "10.I": {
     "page": 1,
@@ -375,7 +375,7 @@
     "height": 2.0,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff851b"
   }
 }
 */

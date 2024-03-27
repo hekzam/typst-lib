@@ -28,20 +28,21 @@
 
 /* PRIMAL MATERIAL */
 
-#let base_field(idb, w, h, parse_type) = {
+#let base_field(idb, w, h, parse_type, fill_color: white) = {
 	verify("base_field", "ID", idb, (int, str))
 	verify("base_field", "width", w, length)
 	verify("base_field", "height", h, length)
 	verify("base_field", "parse type", parse_type, str)
+	verify("base_field", "test fill color", fill_color, color)
 	if (not ("word", "number", "single_figure", "binary").contains(parse_type)) {
 		panic(str(parse_type) + " is not among allowed parse type")
 	}
-	return rect-box(str(idb), w, h)
+	return rect-box(str(idb), w, h, fill-color: fill_color)
 }
 
 /* COMPOSITE MATERIAL */
 
-#let fields_suite(idb, parse_type, how_many, width, height, space: 0pt, id_separator: ".", id_suite: ()) = {
+#let fields_suite(idb, parse_type, how_many, width, height, space: 0pt, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("figures_suite", "ID", idb, (int, str))
 	verify("figures_suite", "parse type", parse_type, str)
 	verify("figures_suite", "boxes number", how_many, int)
@@ -50,6 +51,7 @@
 	verify("figures_suite", "spaces between boxes", space, length)
 	verify("figures_suite", "ID separator", id_separator, str)
 	verify("figures_suite", "IDs suite", id_suite, array)
+	verify("figures_suite", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("figures_suite", "how many fields to create", id_suite, how_many)
@@ -66,20 +68,21 @@
 		}
 		id_count = id_count + 1
 		
-		l.push(base_field(id_, width, height, parse_type))
+		l.push(base_field(id_, width, height, parse_type, fill_color: fill_color))
 	}
 	return grid(rows: 1, columns: how_many, column-gutter: space, ..l)
 }
 
 /* IDENTIFICATION PRESETS */
 
-#let grid_num(idb, numb_rows: 1, numb_beginning: 0, numb_end: 9, id_separator: ".", id_suite: ()) = {
+#let grid_num(idb, numb_rows: 1, numb_beginning: 0, numb_end: 9, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("grid_num", "ID", idb, (int, str))
 	verify("grid_num", "ID separator", id_separator, str)
 	verify("grid_num", "number of rows", numb_rows, int)
 	verify("grid_num", "numb_beginning", numb_beginning, int)
 	verify("grid_num", "numb_end", numb_end, int)
 	verify("grid_num", "IDs suite", id_suite, array)
+	verify("grid_num", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("grid_num", "numb_rows * (1 + numb_end - numb_beginning)", id_suite, numb_rows * (1 + numb_end - numb_beginning))
@@ -97,14 +100,14 @@
 				id_ = str(idb) + id_separator + str(a) + id_separator + str(b)
 			}
 			
-			let lll = base_field(id_, 4mm, 4mm, "binary")
+			let lll = base_field(id_, 4mm, 4mm, "binary", fill_color: fill_color)
 			l.push(grid(rows: 1, columns: 2, column-gutter: 3mm, [#b], lll))
 		}
 	}
 	return grid(rows: numb_rows, columns: 1 + numb_end - numb_beginning, row-gutter: 2mm, column-gutter: 4mm, ..l)
 }
 
-#let ID_field(idq, rows: 8, numb_beginning: 0, numb_end: 9, if_names: true, if_grid: false, id_separator: ".", id_suite: ()) = {
+#let ID_field(idq, rows: 8, numb_beginning: 0, numb_end: 9, if_names: true, if_grid: false, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("ID_field", "ID", idq, (int, str))
 	verify("ID_field", "ID separator", id_separator, str)
 	verify("ID_field", "number of rows", rows, int)
@@ -113,6 +116,7 @@
 	verify("ID_field", "if_names", if_names, bool)
 	verify("ID_field", "if_grid", if_grid, bool)
 	verify("ID_field", "IDs suite", id_suite, array)
+	verify("ID_field", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("ID_field", "number of fields", id_suite, 2 + rows * (1 + numb_end - numb_beginning))
@@ -121,18 +125,18 @@
 	if (if_names) {
 		let ll = ()
 		ll.push("Last name")
-		ll.push(base_field(str(idq) + id_separator + if (id_suite.len() > 0) {str(id_suite.at(0))} else {"l"}, 4cm, 0.5cm, "word"))
+		ll.push(base_field(str(idq) + id_separator + if (id_suite.len() > 0) {str(id_suite.at(0))} else {"l"}, 4cm, 0.5cm, "word", fill_color: fill_color))
 		ll.push("First name")
-		ll.push(base_field(str(idq) + id_separator + if (id_suite.len() > 0) {str(id_suite.at(1))} else {"f"}, 4cm, 0.5cm, "word"))
+		ll.push(base_field(str(idq) + id_separator + if (id_suite.len() > 0) {str(id_suite.at(1))} else {"f"}, 4cm, 0.5cm, "word", fill_color: fill_color))
 		l.push(grid(columns: 4, column-gutter: (2mm, 5mm, 2mm), ..ll))
 	}
 	
 	if (if_grid) {
-		l.push(grid_num(idq, numb_rows: rows, numb_beginning: numb_beginning, numb_end: numb_end, id_separator: id_separator, id_suite: id_suite))
+		l.push(grid_num(idq, numb_rows: rows, numb_beginning: numb_beginning, numb_end: numb_end, id_separator: id_separator, id_suite: id_suite, fill_color: fill_color))
 	} else {
 		let ll = ()
 		ll.push("Student ID")
-		ll.push(fields_suite(str(idq), "single_figure", rows, 3mm, 5mm, space: 2mm, id_separator: id_separator, id_suite: if (if_names and id_suite.len() > 0) {id_suite.slice(2)} else {id_suite}))
+		ll.push(fields_suite(str(idq), "single_figure", rows, 3mm, 5mm, space: 2mm, id_separator: id_separator, id_suite: if (if_names and id_suite.len() > 0) {id_suite.slice(2)} else {id_suite}, fill_color: fill_color))
 		l.push(grid(columns: 2, column-gutter: 2mm, ..ll))
 	}
 	return grid(columns: 1, row-gutter: 7pt, ..l)
@@ -140,13 +144,14 @@
 
 /* A.P.I. MAIN PART: PARSING FUNCTIONS */
 
-#let confidence(idq, nuances: (25, 50, 75), display_mode: true, vertical: false, id_separator: ".", id_suite: ()) = {
+#let confidence(idq, nuances: (25, 50, 75), display_mode: true, vertical: false, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("confidence", "ID", idq, (int, str))
 	verify("confidence", "ID separator", id_separator, str)
 	verify("confidence", "list of nuances", nuances, array)
 	verify("confidence", "display mode", display_mode, bool)
 	verify("confidence", "vertical mode", vertical, bool)
 	verify("confidence", "IDs suite", id_suite, array)
+	verify("confidence", "test fill color", fill_color, color)
 	id_suite.dedup()
 	id_suite.flatten()
 	nuances.dedup()
@@ -171,32 +176,34 @@
 				id_ = str(idq) + id_separator + "c" + id_separator + str(i)
 			}
 			
-			l.push([#n1 - #n2% #box(base_field(id_, 2mm, 2mm, "binary"))])
+			l.push([#n1 - #n2% #box(base_field(id_, 2mm, 2mm, "binary", fill_color: fill_color))])
 			row.push(2fr)
 		}
 	} else {
-		l.push([#box(base_field(str(idq) + id_separator + "c", 10mm, 5mm, "number")) %])
+		l.push([#box(base_field(str(idq) + id_separator + "c", 10mm, 5mm, "number", fill_color: fill_color)) %])
 		row.push(1fr)
 	}
 	return grid(rows: if (vertical) {20pt} else {1}, columns: if (vertical) {1} else {row}, ..l)
 }
 
-#let question_zone(idq, white_zone, id_separator: ".") = {
-	verify("mcq_grid", "ID", idq, int)
-	verify("mcq_grid", "white_zone", white_zone, length)
-	verify("mcq_grid", "ID separator", id_separator, str)
+#let question_zone(idq, white_zone, id_separator: ".", fill_color: white) = {
+	verify("question_zone", "ID", idq, int)
+	verify("question_zone", "white_zone", white_zone, length)
+	verify("question_zone", "ID separator", id_separator, str)
+	verify("question_zone", "test fill color", fill_color, color)
 	
 	if (white_zone > 0pt) {
 		linebreak()
-		rect-box(str(idq), 100%, white_zone)
+		rect-box(str(idq), 100%, white_zone, fill-color: fill_color)
 	}
 }
 
-#let mcq_one(idq, answers, vertical, id_separator: ".", id_suite: ()) = {
+#let mcq_one(idq, answers, vertical, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("mcq_one", "ID", idq, int)
 	verify("mcq_one", "ID separator", id_separator, str)
 	verify("mcq_one", "answers list", answers, array)
 	verify("mcq_one", "IDs suite", id_suite, array)
+	verify("mcq_one", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("mcq_one", "answers array length", id_suite, answers.len())
@@ -208,11 +215,11 @@
 	for (case) in answers {
 		let id_
 		if (id_suite.len() > 0) {
-			id_ = str(id_suite.at(id_count))
+			id_ = str(idq) + id_separator + str(id_suite.at(id_count))
 		} else {
 			id_ = str(idq) + id_separator + str(id_count)
 		}
-		l.push([#box(base_field(id_, 2mm, 2mm, "binary")) #case])
+		l.push([#box(base_field(id_, 2mm, 2mm, "binary", fill_color: fill_color)) #case])
 		if (vertical) {col.push(16pt)} else {col.push(1fr)}
 		id_count = id_count + 1
 	}
@@ -223,11 +230,13 @@
 	return grid(rows: if (vertical) {col} else {auto}, columns: if (vertical) {auto} else {col}, ..l)
 }
 
-#let true_false(idq, assertions, id_separator: ".", id_suite: ()) = {
+#let true_false(idq, assertions, id_separator: ".", id_suite: (), fill_color_t: white, fill_color_f: white) = {
 	verify("true_false", "ID", idq, int)
 	verify("true_false", "ID separator", id_separator, str)
 	verify("true_false", "assertions list", assertions, array)
 	verify("true_false", "IDs suite", id_suite, array)
+	verify("true_false", "test fill color for true cases", fill_color_t, color)
+	verify("true_false", "test fill color for false cases", fill_color_f, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("true_false", "assertions array length * 2", id_suite, assertions.len() * 2)
@@ -249,19 +258,20 @@
 			id_2 = str(idq) + id_separator + str(id_count) + "w"
 		}
 		g.push([#a])
-		g.push([True #box(base_field(id_1, 2mm, 2mm, "binary"))])
-		g.push([False #box(base_field(id_2, 2mm, 2mm, "binary"))])
+		g.push([True #box(base_field(id_1, 2mm, 2mm, "binary", fill_color: fill_color_t))])
+		g.push([False #box(base_field(id_2, 2mm, 2mm, "binary", fill_color: fill_color_f))])
 		id_count = id_count + 1
 	}
 	return grid(columns: (2fr, 1fr, 1fr), gutter: 6pt, ..g)
 }
 
-#let mcq_grid(idq, questions, answers, id_separator: ".", id_suite: ()) = {
+#let mcq_grid(idq, questions, answers, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("mcq_grid", "ID", idq, int)
 	verify("mcq_grid", "ID separator", id_separator, str)
 	verify("mcq_grid", "questions list", questions, array)
 	verify("mcq_grid", "questions list", answers, array)
 	verify("mcq_grid", "IDs suite", id_suite, array)
+	verify("mcq_grid", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("mcq_grid", "questions * answers", id_suite, questions.len() * answers.len())
@@ -293,7 +303,7 @@
 				id_ = str(idq) + id_separator + str(id_count_1) + id_separator + str(id_count_2)
 			}
 			
-			grille.push([#box(base_field(id_, 2mm, 2mm, "binary"))])
+			grille.push([#box(base_field(id_, 2mm, 2mm, "binary", fill_color: fill_color))])
 			id_count_2 = id_count_2 + 1
 		}
 		id_count_1 = id_count_1 + 1
@@ -301,7 +311,7 @@
 	return grid(columns: col, rows: row, gutter: 6pt, ..grille)
 }
 
-#let table_parse(idq, row_size, col, row, cont, id_separator: ".", id_suite: ()) = {
+#let table_parse(idq, row_size, col, row, cont, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("table_parse", "ID", idq, int)
 	verify("table_parse", "row size", row_size, length)
 	verify("table_parse", "ID separator", id_separator, str)
@@ -309,6 +319,7 @@
 	verify("table_parse", "rows list", row, array)
 	verify("table_parse", "contents list", cont, array)
 	verify("table_parse", "IDs suite", id_suite, array)
+	verify("table_parse", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("table_parse", "cells zone dimension", id_suite, col.len() * row.len())
@@ -329,11 +340,11 @@
 	
 	for (c) in col {
 		col_align.push(1fr)
-		table_cases.push([#c])
+		table_cases.push(box(inset: 5pt, c))
 	}
 	for (r) in row {
 		row_align.push(row_size)
-		table_cases.push([#r])
+		table_cases.push(box(inset: 5pt, r))
 		for c in col {
 			if (case_count < cont.len()) and (cont.at(case_count) != "") {
 				table_cases.push(cont.at(case_count))
@@ -345,7 +356,7 @@
 					id_ = str(idq) + id_separator + str(id_count)
 				}
 				
-				table_cases.push(rect-box(id_, 100%, 100%, stroke-width: 0mm))
+				table_cases.push(rect-box(id_, 100%, 100%, stroke-width: 0mm, fill-color: fill_color))
 				id_count = id_count + 1
 			}
 			case_count = case_count + 1
@@ -355,15 +366,9 @@
 	global_col_align.push(auto)
 	
 	return table(
-				/*columns: global_col_align,
-				rows: global_row_align,
-				inset: 0pt,
-				align: horizon + center,
-					..title,
-					table(*/
 		columns: col_align,
 		rows: row_align,
-		inset: 8pt,
+		inset: 1pt,
 		gutter: (2pt, 0pt),
 		align: (col, row) =>
 		if row == 0 { center }
@@ -373,12 +378,13 @@
 	)
 }
 
-#let table_column(idq, size, col, horiz: false, id_separator: ".", id_suite: ()) = {
+#let table_column(idq, size, col, horiz: false, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("table_column", "ID", idq, int)
 	verify("table_column", "row or column size", size, length)
 	verify("table_column", "ID separator", id_separator, str)
 	verify("table_column", "columns list", col, array)
 	verify("table_column", "IDs suite", id_suite, array)
+	verify("table_column", "test fill color", fill_color, color)
 	id_suite.flatten()
 	id_suite.dedup()
 	verify_id_suite("table_column", "columns number", id_suite, col.len())
@@ -391,23 +397,30 @@
 		for (c) in col {
 			let id_
 			if (id_suite.len() > 0) {
-				id_ = str(idq) + id_separator + id_suite.at(id_count)
+				id_ = str(idq) + id_separator + str(id_suite.at(id_count))
 			} else {
 				id_ = str(idq) + id_separator + str(id_count)
 			}
 			
 			col_align.push(auto)
-			table_cases.push([#c])
-			table_cases.push(rect-box(id_, 100%, 100%, stroke-width: 0mm))
+			table_cases.push(box(inset: 5pt, c))
+			table_cases.push(rect-box(id_, 100%, 100%, stroke-width: 0mm, fill-color: fill_color))
 			id_count = id_count + 1
 		}
 	} else {
 		for (c) in col {
 			col_align.push(1fr)
-			table_cases.push([#c])
+			table_cases.push(box(inset: 5pt, c))
 		}
 		for (c) in col {
-			table_cases.push(rect-box(str(idq) + id_separator + str(id_count), 100%, 100%))
+			let id_
+			if (id_suite.len() > 0) {
+				id_ = str(idq) + id_separator + str(id_suite.at(id_count))
+			} else {
+				id_ = str(idq) + id_separator + str(id_count)
+			}
+			
+			table_cases.push(rect-box(id_, 100%, 100%, stroke-width: 0mm, fill-color: fill_color))
 			id_count = id_count + 1
 		}
 	}
@@ -417,7 +430,7 @@
 		rows: if (horiz) {size} else {(auto, size)},
 		row-gutter: if (horiz) {0pt} else {2pt},
 		column-gutter: if (horiz) {2pt} else {0pt},
-		inset: 8pt,
+		inset: 1pt,
 		align: horizon + center,
 		..table_cases
 	)

@@ -1,9 +1,9 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.question_zone(1, 24pt)
-#mcq.question_zone(2, 60pt)
-#mcq.question_zone(3, 105pt, id_separator: "-")
+#mcq.question_zone(1, 24pt, fill_color: blue)
+#mcq.question_zone(2, 60pt, fill_color: green)
+#mcq.question_zone(3, 105pt, id_separator: "-", fill_color: red)
 
 #finalize-atomic-boxes()
 
@@ -16,7 +16,7 @@
     "height": 8.466653731501244,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#0074d9"
   },
   "2": {
     "page": 1,
@@ -26,7 +26,7 @@
     "height": 21.16663432875311,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#2ecc40"
   },
   "3": {
     "page": 1,
@@ -36,7 +36,7 @@
     "height": 37.04161007531794,
     "stroke-width": 0.25,
     "stroke-color": "#000000",
-    "fill-color": "#ffffff"
+    "fill-color": "#ff4136"
   }
 }
 */
