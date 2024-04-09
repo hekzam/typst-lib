@@ -14,6 +14,7 @@
             buildInputs = [
               pkgs.typst
               pkgs.inkscape
+              pkgs.pdftk
               pkgs.python3
               pkgs.python3Packages.opencv4
               pkgs.python3Packages.pytest

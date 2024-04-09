@@ -1,22 +1,24 @@
-#import "../lib.typ": rect-box, finalize-atomic-boxes
+#import "../lib.typ": rect-box, gen-copies
 #let bcol = json("./input-fill-colors.json")
 #let f-color = white
+#let b2i-separate-page = int(sys.inputs.at("b2i-separate-page", default: "0")) == 1
 
-#set align(left+top)
+#let copy-content = [
+  #set align(left+top)
 
-#set page(
-  paper: "a4",
-  header: [#rect-box("h0", 10cm, .5cm, fill-color: color.rgb(bcol.at("h0")))],
-  footer: [
-    #set align(center)
-    #rect-box("f0", 10cm, 1cm, fill-color: color.rgb(bcol.at("f0")))
-  ]
-)
+  #rect-box("b0", 5cm, 1cm, fill-color: color.rgb(bcol.at("b0")))
 
-#rect-box("b0", 5cm, 1cm, fill-color: color.rgb(bcol.at("b0")))
+  #rect-box("b1", 100%, 1cm, fill-color: color.rgb(bcol.at("b1")))
 
-#rect-box("b1", 100%, 1cm, fill-color: color.rgb(bcol.at("b1")))
+  Inline #box(rect-box("b2i", 8cm, 2.5cm, fill-color: color.rgb(bcol.at("b2i"))))
 
-Inline #box(rect-box("b2i", 8cm, 2.5cm, fill-color: color.rgb(bcol.at("b2i"))))
+  #if b2i-separate-page {
+    pagebreak()
+  }
+  #lorem(30)
+]
 
-#finalize-atomic-boxes()
+#let n = int(sys.inputs.at("nb-copies", default: "1"))
+#let d = int(sys.inputs.at("duplex-printing", default: "0")) == 1
+
+#gen-copies("basic", copy-content, nb-copies: n, duplex-printing: d)

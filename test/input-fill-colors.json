@@ -1,7 +1,9 @@
 {
-  "h0": "#ffffff",
   "b0": "#ff0000",
   "b1": "#00ff00",
   "b2i": "#0000ff",
-  "f0": "#ff00ff"
+  "marker bottom-left": "#000000",
+  "marker bottom-right": "#000000",
+  "marker top-left": "#000000",
+  "marker top-right": "#000000"
 }
