@@ -144,18 +144,23 @@
 
 /* A.P.I. MAIN PART: PARSING FUNCTIONS */
 
-#let confidence(idq, nuances: (25, 50, 75), display_mode: true, vertical: false, id_separator: ".", id_suite: (), fill_color: white) = {
+#let confidence(idq, nuances: (25, 50, 75), if_multiple_boxes: true, vertical: false, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("confidence", "ID", idq, (int, str))
 	verify("confidence", "ID separator", id_separator, str)
 	verify("confidence", "list of nuances", nuances, array)
-	verify("confidence", "display mode", display_mode, bool)
+	verify("confidence", "if_multiple_boxes", if_multiple_boxes, bool)
 	verify("confidence", "vertical mode", vertical, bool)
 	verify("confidence", "IDs suite", id_suite, array)
 	verify("confidence", "test fill color", fill_color, color)
 	id_suite.dedup()
 	id_suite.flatten()
 	nuances.dedup()
-	verify_id_suite("confidence", "nuances array length", id_suite, if (display_mode) {nuances.len() - 1} else {0})
+	verify_id_suite("confidence", "nuances array length", id_suite, if (if_multiple_boxes) {nuances.len() - 1} else {0})
+	
+	for n in nuances {
+		assert(n >= 0)
+		assert(n <= 100)
+	}
 	
 	let l = ()
 	let row = ()
@@ -165,7 +170,7 @@
 	nuances = nuances.sorted().dedup()
 	l.push([Taux de certitude:])
 	
-	if (display_mode) {
+	if (if_multiple_boxes) {
 		for i in range(nuances.len() - 1) {
 			let n1 = nuances.at(i)
 			let n2 = nuances.at(i+1)
@@ -311,7 +316,7 @@
 	return grid(columns: col, rows: row, gutter: 6pt, ..grille)
 }
 
-#let table_parse(idq, row_size, col, row, cont, id_separator: ".", id_suite: (), fill_color: white) = {
+#let table_parse(idq, row_size, col, row, cont, turn_aside: false, parse_inset: 1pt, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("table_parse", "ID", idq, int)
 	verify("table_parse", "row size", row_size, length)
 	verify("table_parse", "ID separator", id_separator, str)
@@ -344,7 +349,7 @@
 	}
 	for (r) in row {
 		row_align.push(row_size)
-		table_cases.push(box(inset: 5pt, r))
+		table_cases.push(if (turn_aside) {table.cell(inset: 5pt, rowspan: 1, align: horizon, rotate(-90deg, reflow: true)[#r])} else {box(inset: 5pt, r)})
 		for c in col {
 			if (case_count < cont.len()) and (cont.at(case_count) != "") {
 				table_cases.push(cont.at(case_count))
@@ -378,7 +383,7 @@
 	)
 }
 
-#let table_column(idq, size, col, horiz: false, id_separator: ".", id_suite: (), fill_color: white) = {
+#let table_column(idq, size, col, horiz: false, turn_aside: false, parse_inset: 1pt, id_separator: ".", id_suite: (), fill_color: white) = {
 	verify("table_column", "ID", idq, int)
 	verify("table_column", "row or column size", size, length)
 	verify("table_column", "ID separator", id_separator, str)
@@ -403,7 +408,7 @@
 			}
 			
 			col_align.push(auto)
-			table_cases.push(box(inset: 5pt, c))
+			table_cases.push(if (turn_aside) {table.cell(inset: 5pt, rowspan: 1, align: horizon, rotate(-90deg, reflow: true)[#c])} else {box(inset: 5pt, c)})
 			table_cases.push(rect-box(id_, 100%, 100%, stroke-width: 0mm, fill-color: fill_color))
 			id_count = id_count + 1
 		}
@@ -430,8 +435,28 @@
 		rows: if (horiz) {size} else {(auto, size)},
 		row-gutter: if (horiz) {0pt} else {2pt},
 		column-gutter: if (horiz) {2pt} else {0pt},
-		inset: 1pt,
+		inset: parse_inset,
 		align: horizon + center,
 		..table_cases
+	)
+}
+
+/* COMPLEX LAYERS */
+
+#let confidence_aside(idq, question, nuances: (25, 50, 75), if_multiple_boxes: true, id_separator: ".", id_suite: (), fill_color: white) = {
+	verify("confidence_aside", "ID", idq, (int, str))
+	/* verify("confidence_aside", "question", question, (table, grid)) */
+	verify("confidence_aside", "ID separator", id_separator, str)
+	verify("confidence_aside", "list of nuances", nuances, array)
+	verify("confidence_aside", "if_multiple_boxes", if_multiple_boxes, bool)
+	verify("confidence_aside", "IDs suite", id_suite, array)
+	verify("confidence_aside", "test fill color", fill_color, color)
+	return grid(
+		columns: (85%, 15%),
+		rows: (auto), 
+		align: (left, right + bottom),
+		question,
+		grid.vline(start: 0),
+		confidence(idq, nuances: nuances, if_multiple_boxes: if_multiple_boxes, vertical: true, id_separator: id_separator, id_suite: id_suite, fill_color: fill_color)
 	)
 }

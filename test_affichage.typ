@@ -77,11 +77,11 @@ Tableaux à parser
 
 #mcq.table_parse(9, 25pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ())
 
-#mcq.table_parse(10, 120pt, ("Column 1", "Column 2 (very very very very very very very large)", "Column 3"), ("Row A \nThis is it", "Row B"), ("Content 1", "Content 2", "Content 3", "Content 4", "Content 5 (very very very very very very very thick)"))
+#mcq.table_parse(10, 120pt, ("Column 1", "Column 2 (very very very very very very very large)", "Column 3"), ("Row A \nThis is it", "Row B"), ("Content 1", "Content 2", "Content 3", "Content 4", "Content 5 (very very very very very very very thick)"), turn_aside: true)
 
 #mcq.table_parse(11, 60pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B", "Row C", "Row D\nYou\nYesyesyes"), ("", "Video Screens Control", "", "Content 3", "", "Content 5", "", "Content 7", "", "Content 9"))
 
-#mcq.table_parse(12, 80pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "Content 1", "Content 2", "Content 3", "Content 4", "Content 5"))
+#mcq.table_parse(12, 80pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "Content 1", "Content 2", "Content 3", "Content 4", "Content 5"), turn_aside: true)
 
 #mcq.table_parse(13, 40pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "", "Content 2", "Content 3"))
 
@@ -95,6 +95,8 @@ Tableaux version colonne
 
 #mcq.table_column(16, 95pt, ("Long column 1", "Column 2", "VeryLongColumn"), horiz: true)
 
+#mcq.table_column(16, 105pt, ("Long column", "Sh. Col.", "VeryLongColumn", "Another Long Column"), horiz: true, turn_aside: true)
+
 = Sixième exercice
 
 Taux de confiance
@@ -103,6 +105,20 @@ Taux de confiance
 
 #mcq.confidence(18, nuances: (5, 15, 5, 90, 50, 100, 0))
 
-#mcq.confidence(19, nuances: (), display_mode: false)
+#mcq.confidence(19, nuances: (), if_multiple_boxes: false)
 
 #mcq.confidence(20, nuances: (10, 30, 50, 70, 90), vertical: true)
+
+= Septième exercice
+
+Affichage du taux de confiance à côté d’une question
+#mcq.confidence_aside(22, mcq.question_zone(21, 30pt), nuances: (), if_multiple_boxes: false)
+
+Taux de confiance avec un QCM
+#mcq.confidence_aside(24, mcq.mcq_grid(23, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7", "Assertion 8", "Assertion 9", "Assertion 10", "Assertion 11", "Assertion 12"), (1, 2, 3, 4)), nuances: (10, 30, 50, 70, 90))
+
+Taux de confiance à une case
+#mcq.confidence_aside(26, mcq.mcq_grid(25, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, 4)), nuances: (), if_multiple_boxes: false)
+
+Taux de confiance avec un tableau
+#mcq.confidence_aside(28, mcq.table_parse(27, 75pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B", "Row C", "Row D"), (), turn_aside: true), nuances: (25, 50, 75, 90, 95))
