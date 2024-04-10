@@ -40,7 +40,7 @@
 ]
 
 #let gen-copies(exam-id, copy-content, nb-copies: 1, duplex-printing: true) = {
-  let marker(id) = rect-box(id, 4mm, 4mm, fill-color: black, stroke-width: 0.5mm, stroke-color: black)
+  let marker(id) = rect-box(id, 4mm, 4mm, fill-color: black, stroke-width: 0mm, stroke-color: black)
 
   set page(
     paper: "a4",
