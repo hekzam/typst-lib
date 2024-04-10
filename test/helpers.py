@@ -15,9 +15,6 @@ def show_process_outputs(name, p):
     if p.stderr is not None and p.stderr != '':
         logging.error(f'{name} stderr: f{p.stderr}')
 
-def gen_filenames(prefix, test_root_dir):
-    return f'{prefix}.typ', f'{test_root_dir}/{prefix}.pdf', f'{test_root_dir}/{prefix}-{{page}}.png'
-
 def count_pdf_pages(filename):
     argv = [ 'pdftk', filename, 'dump_data' ]
 
@@ -114,7 +111,7 @@ def check_atomic_boxes(atomic_boxes, png_filenames, input_fill_colors, test_root
         inner_box_width, inner_box_height, _ = inner_box_img.shape
         nb_pixels = inner_box_width * inner_box_height
 
-        cv2.imwrite(f'{test_root_dir}/{test_name}-inner-{box_id}.png', inner_box_img)
+        cv2.imwrite(f'{test_root_dir}/{test_name}/inner-{box_id}.png', inner_box_img)
 
         # read component values of the expected fill color
         m = COLOR_RE.match(fill_color)
