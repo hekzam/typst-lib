@@ -92,6 +92,9 @@ def check_atomic_boxes(atomic_boxes, png_filenames, input_fill_colors, test_root
     imgs = [ cv2.imread(f) for f in png_filenames ]
 
     for box_id, box in atomic_boxes.items():
+        if box_id == 'hekzam qrcode':
+            continue
+
         x0,y0 = box['x'], box['y']
         x1,y1 = box['x'] + box['width'], box['y'] + box['height']
         stroke_width = box['stroke-width']

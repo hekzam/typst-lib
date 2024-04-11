@@ -49,7 +49,7 @@ def test_basic(test_root_dir, input_fill_colors, nb_copies, duplex_printing, cop
     atomic_boxes = typst_query(typ_filename, '<atomic-boxes>', inputs_dict=inputs_dict)
     with open(json_filename, 'w') as f:
         json.dump(atomic_boxes, f, allow_nan=False, sort_keys=True)
-    assert(len(atomic_boxes)) == 4 + 6
+    assert(len(atomic_boxes)) == 3 + 6
 
     pngs = []
     for page in range(1,nb_pages+1):

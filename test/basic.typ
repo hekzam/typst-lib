@@ -17,12 +17,14 @@
     pagebreak()
   }
 
-  Inline #box(rect-box("b2i", 8cm, 2.5cm, fill-color: color.rgb(bcol.at("b2i"))))
-
   = Exercise 2
   #rect-box("b2", 5cm, 1cm, fill-color: color.rgb(bcol.at("b2")))
 
+  Inline #box(rect-box("b2i", 8cm, 2.5cm, fill-color: color.rgb(bcol.at("b2i"))))
 
+  #set align(bottom)
+  = Exercise 3
+  This exercise should be at the bottom of its page.
   #rect-box("b3", 100%, 1cm, fill-color: color.rgb(bcol.at("b3")))
 ]
 
