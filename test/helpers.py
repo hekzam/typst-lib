@@ -59,6 +59,23 @@ def typst_query(input_filename, selector, typst_root='..'):
         raise RuntimeError('typst query returned an empty string')
     return json.loads(p.stdout)
 
+def automatic_query(input_filename, selector = '<atomic-boxes>', typst_root = '..', func = "table_parse", idq = 0, cols = 3, rows = 3, width = "100pt", inset = "0pt", horiz = False, points = True):
+    assert func in ["table_parse", "table_column"]
+
+    if func == "table_parse":
+        argv = [ 'typst', 'query', '--root', typst_root, '--one', '--field', 'value', input_filename, selector, '--input', 'id=' + str(idq), '--input', 'cols=' + str(cols), '--input', 'rows=' + str(rows), '--input', 'width=' + str(width), '--input', 'parse_inset=' + str(inset), '--input', 'points=' + str(points) ]
+    else:
+        argv = [ 'typst', 'query', '--root', typst_root, '--one', '--field', 'value', input_filename, selector, '--input', 'id=' + str(idq), '--input', 'cols=' + str(cols), '--input', 'width=' + str(width), '--input', 'parse_inset=' + str(inset), '--input', 'horizontal=' + str(horiz), '--input', 'points=' + str(points) ]
+
+    p = subprocess.run(argv, capture_output=True, encoding='utf-8')
+    if p.returncode != 0:
+        show_process_outputs('typst query', p)
+        raise RuntimeError(f'typst query execution failed (returncode={p.returncode})')
+
+    if p.stdout == '':
+        raise RuntimeError('typst query returned an empty string')
+    return json.loads(p.stdout)
+
 def vector_to_raster(coord, scale=2000/210):
     return int(coord*scale)
 

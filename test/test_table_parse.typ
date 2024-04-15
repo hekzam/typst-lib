@@ -1,8 +1,8 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.table_parse(11, 25pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), (), id_suite: ("A", "B", "C", "D", "E", "F"), fill_color: green)
-#mcq.table_parse(12, 40pt, ("Column 1", "Column 2", "Column 3", "Column 4"), ("Row A", "Row B"), (), id_suite: ("A", "B", "C", "D", "E", "F", "G", "H"), fill_color: red)
+#mcq.table_parse(11, ("A", "B", "C", "D", "E", "F"), 25pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), (), fill_color: green)
+#mcq.table_parse(12, ("A", "B", "C", "D", "E", "F", "G", "H"), 40pt, ("Column 1", "Column 2", "Column 3", "Column 4"), ("Row A", "Row B"), (), fill_color: red)
 
 #finalize-atomic-boxes()
 
