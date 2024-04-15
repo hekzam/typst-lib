@@ -5,7 +5,7 @@
 #show heading: it => [
 	#set align(left)
 	#set text(font: "Inria Serif")
-	Exercice #counter(heading).display()\: #text(it.body)
+	Exercise #counter(heading).display()\: #text(it.body)
 ]
 
 = Identifier field
