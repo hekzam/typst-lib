@@ -92,19 +92,13 @@ def check_atomic_boxes(atomic_boxes, png_filenames, input_fill_colors, test_root
     imgs = [ cv2.imread(f) for f in png_filenames ]
 
     for box_id, box in atomic_boxes.items():
-        if box_id == 'hekzam qrcode':
-            continue
-
         x0,y0 = box['x'], box['y']
         x1,y1 = box['x'] + box['width'], box['y'] + box['height']
         stroke_width = box['stroke-width']
         fill_color = box['fill-color']
         page = box['page']
 
-        # test whether typst fill-color metadata is the expected one
-        expected_fill_color = input_fill_colors[box_id]
-        assert expected_fill_color == fill_color, f"atomic box '{box_id}' should have fill_color '{expected_fill_color}' according to JSON fill color input, but the color obtained from typst query is '{fill_color}'"
-
+        # extract subimage for the box content
         v2rs = vector_to_raster_scale
         inner_box_img = imgs[page - 1][
             vector_to_raster(y0 + stroke_width, v2rs) + 1 : vector_to_raster(y1 - stroke_width, v2rs) - 1,
@@ -113,8 +107,15 @@ def check_atomic_boxes(atomic_boxes, png_filenames, input_fill_colors, test_root
 
         inner_box_width, inner_box_height, _ = inner_box_img.shape
         nb_pixels = inner_box_width * inner_box_height
-
         cv2.imwrite(f'{test_root_dir}/{test_name}/inner-{box_id}.png', inner_box_img)
+
+        # stop test there for boxes that have inner content
+        if box_id.startswith('marker qrcode'):
+            continue
+
+        # test whether typst fill-color metadata is the expected one
+        expected_fill_color = input_fill_colors[box_id]
+        assert expected_fill_color == fill_color, f"atomic box '{box_id}' should have fill_color '{expected_fill_color}' according to JSON fill color input, but the color obtained from typst query is '{fill_color}'"
 
         # read component values of the expected fill color
         m = COLOR_RE.match(fill_color)

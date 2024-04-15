@@ -44,6 +44,7 @@
 
 #let gen-copies(exam-id, copy-content, nb-copies: 1, duplex-printing: true) = {
   let marker(id) = rect-box(id, 1mm, 1mm, fill-color: black, stroke-width: 0mm, stroke-color: black)
+  let qrcode-height = 1.25cm
 
   set page(
     paper: "a4",
@@ -60,11 +61,13 @@
         grid(
           columns: 2,
           column-gutter: 1fr,
+          [],
           {
-            marker("marker top-left")
-          },
-          {
-            marker("marker top-right")
+            context {
+              let page-i = counter(page).get().at(0)
+              let exam-qrcode = tiaoma.qrcode("some constant value" + "000" + str(page-i), height: qrcode-height)
+              rect-box("marker qrcode header page" + str(page-i), qrcode-height, qrcode-height, stroke-width: 0mm, inner-content: exam-qrcode)
+            }
           },
         )
       } else []
@@ -77,11 +80,14 @@
           columns: 2,
           column-gutter: 1fr,
           {
-            let qrcode-height = 1.25cm
-            let qrcode-content = context tiaoma.qrcode(exam-id + "000" + str(copy-counter.get().at(0)) + "000" + str(counter(page).get().at(0)),
-              height: qrcode-height
-            )
-            rect-box("hekzam qrcode", qrcode-height, qrcode-height, stroke-width: 0mm, inner-content: qrcode-content)
+            context {
+              let copy-i = copy-counter.get().at(0)
+              let page-i = counter(page).get().at(0)
+              let qrcode-content = tiaoma.qrcode(exam-id + "000" + str(copy-i) + "000" + str(page-i),
+                height: qrcode-height
+              )
+              rect-box("marker qrcode footer page" + str(page-i), qrcode-height, qrcode-height, stroke-width: 0mm, inner-content: qrcode-content)
+            }
           },
           {
             grid(
