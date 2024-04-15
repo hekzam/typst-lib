@@ -8,7 +8,7 @@
 	Exercice #counter(heading).display()\: #text(it.body)
 ]
 
-= Champs identifiant
+= Identifier field
 
 Identifier experiment 1
 #mcq.ID_field(91, if_grid: true)
@@ -25,55 +25,55 @@ Identifier experiment 4
 Identifier experiment 5
 #mcq.ID_field(95, rows: 13, if_grid: true)
 
-= Questions de cours
+= Course questions
 
-Parsing de lettres
+Letter parsing
 #mcq.base_field(101, 50pt, 15pt, "word")
 
-Parsing de chiffres
+Number parsing
 #mcq.base_field(102, 35pt, 15pt, "word")
 
-Parsing d'un chiffre
+Parsing a digit
 #mcq.base_field(103, 10pt, 15pt, "number")
 
-Séquence de chiffres
+Sequence of number
 #mcq.fields_suite(104, "single_figure", 8, 12pt, 18pt, space: 6pt, id_suite: (0, 1, 2, 3, 4, 5, 6, 33))
 
-Séquence de mots
+Sequence of words
 #mcq.fields_suite(105, "word", 4, 65pt, 15pt, space: 8pt)
 
-= Premier exercice
+= First exercise
 
-Zone de texte (répondre sur la copie)
+Text zone (reply on the copy)
 #mcq.question_zone(1, 24pt)
-Zone de texte
+Text zone
 #mcq.question_zone(2, 60pt)
 
-= Deuxième exercice
+= Second exercise
 
-Questions de QCM uniques
+Unique MCQ questions
 
 #mcq.mcq_one(3, (20, 25, 27, 37, 61, 89), false)
 
 #mcq.mcq_one(4, ("One", "Two", "Three", "Four", "Five"), true)
 
-#mcq.mcq_one(5, (1, 2, 3, "La réponse D"), false)
+#mcq.mcq_one(5, (1, 2, 3, "Answer D"), false)
 
-#mcq.mcq_one(6, (1, 2, 3, "La réponse D"), true)
+#mcq.mcq_one(6, (1, 2, 3, "Answer D"), true)
 
-= Troisième exercice
+= Third exercise
 
-Question vrai-faux
+True-false question
 
 #mcq.true_false(7, ("Assertion 1", "Assertion 2"))
 
-Plusieurs questions, mêmes réponses
+Several questions, same responses
 
 #mcq.mcq_grid(8, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"))
 
-= Quatrième exercice
+= Fourth exercise
 
-Tableaux à parser
+Tables to parse
 
 #mcq.table_parse(9, 25pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ())
 
@@ -85,9 +85,9 @@ Tableaux à parser
 
 #mcq.table_parse(13, 40pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B"), ("Content 0", "", "Content 2", "Content 3"))
 
-= Cinquième exercice
+= Fifth exercise
 
-Tableaux version colonne
+Tables column version
 
 #mcq.table_column(14, 180pt, ("Column 1", "Column 2", "Column 3"))
 
@@ -97,9 +97,9 @@ Tableaux version colonne
 
 #mcq.table_column(16, 105pt, ("Long column", "Sh. Col.", "VeryLongColumn", "Another Long Column"), horiz: true, turn_aside: true)
 
-= Sixième exercice
+= Sixth exercise
 
-Taux de confiance
+Confidence rate
 
 #mcq.confidence(17, nuances: (0, 5, 15, 50, 75, 85, 95, 100))
 
@@ -109,16 +109,16 @@ Taux de confiance
 
 #mcq.confidence(20, nuances: (10, 30, 50, 70, 90), vertical: true)
 
-= Septième exercice
+= Seventh exercise
 
-Affichage du taux de confiance à côté d’une question
+Confidence rate next to a question
 #mcq.confidence_aside(22, mcq.question_zone(21, 30pt), nuances: (), if_multiple_boxes: false)
 
-Taux de confiance avec un QCM
+Confidence rate with MCQ 
 #mcq.confidence_aside(24, mcq.mcq_grid(23, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7", "Assertion 8", "Assertion 9", "Assertion 10", "Assertion 11", "Assertion 12"), (1, 2, 3, 4)), nuances: (10, 30, 50, 70, 90))
 
-Taux de confiance à une case
+One-box confidence rate
 #mcq.confidence_aside(26, mcq.mcq_grid(25, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, 4)), nuances: (), if_multiple_boxes: false)
 
-Taux de confiance avec un tableau
+Confidence rate with a table
 #mcq.confidence_aside(28, mcq.table_parse(27, 75pt, ("Column 1", "Column 2", "Column 3"), ("Row A", "Row B", "Row C", "Row D"), (), turn_aside: true), nuances: (25, 50, 75, 90, 95))
