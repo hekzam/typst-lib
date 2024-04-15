@@ -32,6 +32,8 @@
         atomic-boxes.update(x => { x.insert(str(id), box) ; x })
         inner-content
       })
+    } else {
+      inner-content
     }
   })
 }
