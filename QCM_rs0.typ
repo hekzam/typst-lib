@@ -168,7 +168,7 @@
 	nuances.push(0)
 	nuances.push(100)
 	nuances = nuances.sorted().dedup()
-	l.push([Taux de certitude:])
+	l.push([Confidence rate:])
 	
 	if (if_multiple_boxes) {
 		for i in range(nuances.len() - 1) {

@@ -36,7 +36,7 @@ Number parsing
 Parsing a digit
 #mcq.base_field(103, 10pt, 15pt, "number")
 
-Sequence of number
+Sequence of numbers
 #mcq.fields_suite(104, "single_figure", 8, 12pt, 18pt, space: 6pt, id_suite: (0, 1, 2, 3, 4, 5, 6, 33))
 
 Sequence of words
@@ -69,7 +69,7 @@ True-false question
 
 Several questions, same responses
 
-#mcq.mcq_grid(8, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"))
+#mcq.mcq_grid(8, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "Answer D"))
 
 = Fourth exercise
 
