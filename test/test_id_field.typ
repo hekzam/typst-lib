@@ -1,12 +1,12 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.ID_field(91, if_grid: true, fill_color: yellow)
-#mcq.ID_field(92, fill_color: blue)
-#mcq.ID_field(93, if_names: false, if_grid: true, fill_color: orange)
-#mcq.ID_field(94, if_names: false, id_suite: ("a", "b", "c", "d", "e", "f", "g", "h"), fill_color: red)
-#mcq.ID_field(95, rows: 13, if_grid: true, fill_color: green)
-#mcq.ID_field(96, rows: 10, id_suite: ("y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"), fill_color: fuchsia)
+#mcq.ID_field(91, auto, if_grid: true, fill_color: yellow)
+#mcq.ID_field(92, auto, fill_color: blue)
+#mcq.ID_field(93, auto, if_names: false, if_grid: true, fill_color: orange)
+#mcq.ID_field(94, ("a", "b", "c", "d", "e", "f", "g", "h"), if_names: false, fill_color: red)
+#mcq.ID_field(95, auto, rows: 13, if_grid: true, fill_color: green)
+#mcq.ID_field(96, ("y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"), rows: 10, fill_color: fuchsia)
 
 #finalize-atomic-boxes()
 

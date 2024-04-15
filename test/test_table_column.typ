@@ -1,8 +1,8 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.table_column(13, 180pt, ("Column 1", "Column 2", "Column 3"), id_suite: ("A", "B", "C"), fill_color: blue)
-#mcq.table_column(14, 90pt, ("Column 1", "Column 2", "Column 3"), horiz: true, id_suite: ("A", "B", "C", "D"), fill_color: yellow)
+#mcq.table_column(13, ("A", "B", "C"), 180pt, ("Column 1", "Column 2", "Column 3"), fill_color: blue)
+#mcq.table_column(14, ("A", "B", "C", "D"), 90pt, ("Column 1", "Column 2", "Column 3"), horiz: true, fill_color: yellow)
 
 #finalize-atomic-boxes()
 

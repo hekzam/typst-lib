@@ -1,9 +1,9 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.mcq_one(4, (1, 2, 3, 4, 5, 6), false, id_suite: ("A", "B", "C", "D", "E", "F"), fill_color: blue)
-#mcq.mcq_one(5, (7, 8, 9, 10, 11), true, fill_color: green)
-#mcq.mcq_one(6, (12, 13, 14, 15, 16), true, id_suite: ("A", "B", "C", "D", "E"), fill_color: red)
+#mcq.mcq_one(4, ("A", "B", "C", "D", "E", "F"), (1, 2, 3, 4, 5, 6), false, fill_color: blue)
+#mcq.mcq_one(5, auto, (7, 8, 9, 10, 11), true, fill_color: green)
+#mcq.mcq_one(6, ("A", "B", "C", "D", "E"), (12, 13, 14, 15, 16), true, fill_color: red)
 
 #finalize-atomic-boxes()
 

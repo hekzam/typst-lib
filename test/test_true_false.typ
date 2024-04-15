@@ -1,8 +1,8 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.true_false(7, ("Assertion 1", "Assertion 2"), fill_color_t: purple, fill_color_f: green)
-#mcq.true_false(8, ("Assertion 1", "Assertion 2", "Assertion 3"), id_suite: ("A", "B", "C", "D", "E", "F"), fill_color_t: red, fill_color_f: yellow)
+#mcq.true_false(7, auto, ("Assertion 1", "Assertion 2"), fill_color_t: purple, fill_color_f: green)
+#mcq.true_false(8, ("A", "B", "C", "D", "E", "F"), ("Assertion 1", "Assertion 2", "Assertion 3"), fill_color_t: red, fill_color_f: yellow)
 
 #finalize-atomic-boxes()
 

@@ -1,8 +1,8 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.mcq_grid(9, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"), fill_color: red)
-#mcq.mcq_grid(10, ("Assertion 1", "Assertion 2", "Assertion 3"), (1, 2, 3), id_suite: ("A", "B", "C", "D", "E", "F", "G", "H", "I"), fill_color: orange)
+#mcq.mcq_grid(9, auto, ("Assertion 1", "Assertion 2", "Assertion 3", "Assertion 4", "Assertion 5", "Assertion 6", "Assertion 7"), (1, 2, 3, "La réponse D"), fill_color: red)
+#mcq.mcq_grid(10, ("A", "B", "C", "D", "E", "F", "G", "H", "I"), ("Assertion 1", "Assertion 2", "Assertion 3"), (1, 2, 3), fill_color: orange)
 
 #finalize-atomic-boxes()
 

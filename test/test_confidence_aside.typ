@@ -1,9 +1,9 @@
 #import "../QCM_rs0.typ" as mcq
 #import "../lib.typ": rect-box, finalize-atomic-boxes
 
-#mcq.confidence_aside(42, mcq.table_parse(41, 40pt, ("Column 1", "Column 2", "Column 3", "Column 4"), ("Row A", "Row B"), (), id_suite: ("A", "B", "C", "D", "E", "F", "G", "H"), fill_color: fuchsia), nuances: (), if_multiple_boxes: false, fill_color: green)
+#mcq.confidence_aside(42, auto, mcq.table_parse(41, ("A", "B", "C", "D", "E", "F", "G", "H"), 40pt, ("Column 1", "Column 2", "Column 3", "Column 4"), ("Row A", "Row B"), (), fill_color: fuchsia), nuances: (), if_multiple_boxes: false, fill_color: green)
 
-#mcq.confidence_aside(44, mcq.table_column(43, 180pt, ("Column 1", "Column 2", "Column 3"), id_suite: ("A", "B", "C"), parse_inset: 0pt, fill_color: yellow), nuances: (25, 50, 75, 90, 95), fill_color: aqua, id_suite: ("d", "c", "b", "a", "s", "s+"))
+#mcq.confidence_aside(44, ("d", "c", "b", "a", "s", "s+"), mcq.table_column(43, ("A", "B", "C"), 180pt, ("Column 1", "Column 2", "Column 3"), parse_inset: 0pt, fill_color: yellow), nuances: (25, 50, 75, 90, 95), fill_color: aqua)
 
 #finalize-atomic-boxes()
 
@@ -128,7 +128,7 @@
     "stroke-color": "#000000",
     "fill-color": "#ffdc00"
   },
-  "d": {
+  "44.d": {
     "page": 1,
     "x": 182.99999999999997,
     "y": 100.38160575379678,
@@ -138,7 +138,7 @@
     "stroke-color": "#000000",
     "fill-color": "#7fdbff"
   },
-  "c": {
+  "44.c": {
     "page": 1,
     "x": 182.99999999999997,
     "y": 107.43715053004782,
@@ -148,7 +148,7 @@
     "stroke-color": "#000000",
     "fill-color": "#7fdbff"
   },
-  "b": {
+  "44.b": {
     "page": 1,
     "x": 182.99999999999997,
     "y": 114.49269530629886,
@@ -158,7 +158,7 @@
     "stroke-color": "#000000",
     "fill-color": "#7fdbff"
   },
-  "a": {
+  "44.a": {
     "page": 1,
     "x": 182.99999999999997,
     "y": 121.54824008254988,
@@ -168,7 +168,7 @@
     "stroke-color": "#000000",
     "fill-color": "#7fdbff"
   },
-  "s": {
+  "44.s": {
     "page": 1,
     "x": 182.99999999999997,
     "y": 128.60378485880094,
@@ -178,7 +178,7 @@
     "stroke-color": "#000000",
     "fill-color": "#7fdbff"
   },
-  "s+": {
+  "44.s+": {
     "page": 1,
     "x": 182.99999999999997,
     "y": 135.65932963505196,
