@@ -59,8 +59,10 @@ def test_basic(test_root_dir, input_fill_colors, nb_copies, duplex_printing, cop
     # check that internal boxes (qrcode markers) are in atomic boxes metadata
     markers = list(filter(lambda x: x.startswith('marker '), atomic_boxes))
     for page in range(1, expected_marked_pages+1):
-        assert f'marker qrcode header page{page}' in markers
-        assert f'marker qrcode footer page{page}' in markers
+        assert f'marker barcode tl page{page}' in markers
+        assert f'marker barcode tr page{page}' in markers
+        assert f'marker barcode bl page{page}' in markers
+        assert f'marker barcode br page{page}' in markers
 
     pngs = []
     for page in range(1,nb_pages+1):

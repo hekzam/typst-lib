@@ -1,6 +1,7 @@
 #import "@preview/tiaoma:0.2.0"
 
 #let atomic-boxes = state("atomic-boxes", (:))
+#let page-state = state("page-state", (:))
 #let copy-counter = counter("copy-counter")
 #let generating-content = state("generating-content", true)
 
@@ -38,36 +39,52 @@
   })
 }
 
-#let finalize-atomic-boxes() = context [
+#let finalize-states() = context [
   #metadata(atomic-boxes.final()) <atomic-boxes>
+  #metadata(page-state.final()) <page>
 ]
 
-#let gen-copies(exam-id, copy-content, nb-copies: 1, duplex-printing: true) = {
-  let marker(id) = rect-box(id, 1mm, 1mm, fill-color: black, stroke-width: 0mm, stroke-color: black)
-  let qrcode-height = 1.25cm
+#let gen-copies(
+  exam-id, copy-content, exam-content-hash: "qhj6DlP5gJ+1A2nFXk8IOq+/TvXtHjlldVhwtM/NIP4=",
+  nb-copies: 1, duplex-printing: true,
+  page-width: 210mm, page-height: 297mm, barcode-height: 12.5mm,
+  margin-x: 10mm, margin-y: 10mm, barcode-content-gutter: 2.5mm,
+) = {
+  assert.eq(type(exam-id), str, message: "exam-id must be a string")
+  assert(not exam-id.contains(","), message: "exam-id cannot contain comma ','")
+  assert.eq(type(page-width), length, message: "page-width must be a length")
+  assert.eq(type(page-height), length, message: "page-height must be a length")
+  assert.eq(type(barcode-height), length, message: "barcode-height must be a length")
+  assert.eq(type(margin-x), length, message: "margin-x must be a length")
+  assert.eq(type(margin-y), length, message: "margin-y must be a length")
+  assert.eq(type(barcode-content-gutter), length, message: "barcode-content-gutter must be a length")
+
+  let sep = ","
 
   set page(
-    paper: "a4",
+    width: page-width,
+    height: page-height,
     margin: (
-      x: 1.5cm,
-      top: 2cm,
-      bottom: 2.5cm,
+      x: margin-x,
+      y: margin-y + barcode-height + barcode-content-gutter,
     ),
     header-ascent: 0mm,
     header: {
       set align(top)
       context if generating-content.get() {
-        v(1cm)
+        v(margin-y)
         grid(
           columns: 2,
           column-gutter: 1fr,
-          [],
           {
-            context {
-              let page-i = counter(page).get().at(0)
-              let exam-qrcode = tiaoma.qrcode("some constant value" + "000" + str(page-i), height: qrcode-height)
-              rect-box("marker qrcode header page" + str(page-i), qrcode-height, qrcode-height, stroke-width: 0mm, inner-content: exam-qrcode)
-            }
+            let page-i = counter(page).get().at(0)
+            let barcode = tiaoma.qrcode(("hztl", exam-id).join(sep), height: barcode-height)
+            rect-box("marker barcode tl page" + str(page-i), barcode-height, barcode-height, stroke-width: 0mm, inner-content: barcode)
+          },
+          {
+            let page-i = counter(page).get().at(0)
+            let barcode = tiaoma.qrcode(("hztr", exam-id).join(sep), height: barcode-height)
+            rect-box("marker barcode tr page" + str(page-i), barcode-height, barcode-height, stroke-width: 0mm, inner-content: barcode)
           },
         )
       } else []
@@ -77,23 +94,19 @@
       set align(bottom)
       context if generating-content.get() {
         grid(
-          columns: 2,
+          columns: 3,
           column-gutter: 1fr,
           {
-            context {
-              let copy-i = copy-counter.get().at(0)
-              let page-i = counter(page).get().at(0)
-              let qrcode-content = tiaoma.qrcode(exam-id + "000" + str(copy-i) + "000" + str(page-i),
-                height: qrcode-height
-              )
-              rect-box("marker qrcode footer page" + str(page-i), qrcode-height, qrcode-height, stroke-width: 0mm, inner-content: qrcode-content)
-            }
+            let copy-i = copy-counter.get().at(0)
+            let page-i = counter(page).get().at(0)
+            let barcode = tiaoma.qrcode(("hzbl", str(copy-i), str(page-i)).join(sep), height: barcode-height)
+            rect-box("marker barcode bl page" + str(page-i), barcode-height, barcode-height, stroke-width: 0mm, inner-content: barcode)
           },
           {
             grid(
               columns: 1,
               row-gutter: 2mm,
-              align: right,
+              align: center,
               [
                 #exam-id #copy-counter.display()
               ],
@@ -102,11 +115,20 @@
               ],
             )
           },
+          {
+            let copy-i = copy-counter.get().at(0)
+            let page-i = counter(page).get().at(0)
+            let barcode = tiaoma.qrcode(("hzbr", str(copy-i), str(page-i), exam-content-hash, exam-id).join(sep), height: barcode-height)
+            rect-box("marker barcode br page" + str(page-i), barcode-height, barcode-height, stroke-width: 0mm, inner-content: barcode)
+          },
         )
-        v(1cm)
+        v(margin-y)
       } else []
     },
   )
+
+  page-state.update(x => { x.insert("width", page-width.mm()) ; x })
+  page-state.update(x => { x.insert("height", page-height.mm()) ; x })
 
   let pagebreak_to = if duplex-printing { "odd" } else { none }
   let n = 0
@@ -132,5 +154,5 @@
       }*/
     }
   }
-  finalize-atomic-boxes()
+  finalize-states()
 }

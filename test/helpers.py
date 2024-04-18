@@ -110,7 +110,7 @@ def check_atomic_boxes(atomic_boxes, png_filenames, input_fill_colors, test_root
         cv2.imwrite(f'{test_root_dir}/{test_name}/inner-{box_id}.png', inner_box_img)
 
         # stop test there for boxes that have inner content
-        if box_id.startswith('marker qrcode'):
+        if box_id.startswith('marker barcode'):
             continue
 
         # test whether typst fill-color metadata is the expected one
